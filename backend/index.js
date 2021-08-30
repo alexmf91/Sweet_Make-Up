@@ -5,7 +5,6 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 
 require('./src/config/mongooseConfig');
-require('./src/config/passportConfig');
 
 const server = express();
 const port = process.env.PORT || 5000;
