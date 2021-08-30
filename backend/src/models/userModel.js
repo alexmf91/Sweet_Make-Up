@@ -7,7 +7,8 @@ const userSchema = new Schema({
   email: String,
   password: String,
   gender: String,
-  reservations: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
+  bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
   calendar: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
