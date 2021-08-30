@@ -12,9 +12,7 @@ async function createOne({ body }, res) {
 
 async function getAll({ query }, res) {
   try {
-    const users = await User.find(query)
-      .populate('calendar')
-      .populate('reserves');
+    const users = await User.find(query);
     res.json(users);
   } catch (error) {
     res.status(500);
