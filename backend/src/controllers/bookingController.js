@@ -12,8 +12,7 @@ async function createOne({ body }, res) {
 
 async function getAll({ query }, res) {
   try {
-    const bookings = await Booking.find(query)
-      .populate('services');
+    const bookings = await Booking.find(query);
     res.json(bookings);
   } catch (error) {
     res.status(500);
