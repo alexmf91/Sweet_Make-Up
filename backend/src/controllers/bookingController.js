@@ -20,7 +20,42 @@ async function getAll({ query }, res) {
   }
 }
 
+async function getOneById({ params: { bookingId } }, res) {
+  try {
+    const bookings = await Booking.findById(bookingId);
+    res.json(bookings);
+  } catch (error) {
+    res.status(500);
+    res.send(error);
+  }
+}
+
+async function updateOneById({ body, params: { bookingId } }, res) {
+  try {
+    const updatedbooking = await Booking.findByIdAndUpdate(bookingId,
+      body, { new: true, useFindAndModify: false });
+    res.json(updatedbooking);
+  } catch (error) {
+    res.status(500);
+    res.send(error);
+  }
+}
+
+async function deleteOneById({ params: { bookingId } }, res) {
+  try {
+    await Booking.findByIdAndDelete(bookingId);
+    res.status(204);
+    res.send();
+  } catch (error) {
+    res.status(500);
+    res.send(error);
+  }
+}
+
 module.exports = {
   createOne,
-  getAll
+  getAll,
+  getOneById,
+  updateOneById,
+  deleteOneById
 };
