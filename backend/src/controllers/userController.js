@@ -1,24 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
-async function createOne({ body }, res) {
-  try {
-    const newUser = await User.create(body);
-    res.json(newUser);
-  } catch (error) {
-    res.status(500);
-    res.send(error);
-  }
-}
-
-async function getAll({ query }, res) {
-  try {
-    const users = await User.find(query);
-    res.json(users);
-  } catch (error) {
-    res.status(500);
-    res.send(error);
-  }
-}
+const refreshTokens = [];
 
 async function getOneById({ params: { userId } }, res) {
   try {
@@ -32,13 +16,7 @@ async function getOneById({ params: { userId } }, res) {
   }
 }
 
-async function updateOneById(
-  {
-    body,
-    params: { userId }
-  },
-  res
-) {
+async function updateOneById({ body, params: { userId } }, res) {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       userId,
@@ -67,10 +45,42 @@ async function deleteOneById({ params: { userId } }, res) {
   }
 }
 
+function signUp({ user }, res) {
+  res.send({
+    user,
+    message: 'Register works'
+  });
+}
+
+function logIn({ user }, res) {
+  const data = { _id: user._id, email: user.email };
+  try {
+    const token = jwt.sign(
+      { user: data },
+      process.env.JWT_SECRET,
+      { expiresIn: '10m' }
+    );
+    const refreshToken = jwt.sign(
+      { user: data },
+      process.env.JWT_SECRET
+    );
+
+    refreshTokens.push(refreshToken);
+
+    return res.json({
+      token,
+      refreshToken
+    });
+  } catch (error) {
+    res.status(500);
+    return res.send(error);
+  }
+}
+
 module.exports = {
-  createOne,
-  getAll,
   getOneById,
   updateOneById,
-  deleteOneById
+  deleteOneById,
+  signUp,
+  logIn
 };

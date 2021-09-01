@@ -12,4 +12,8 @@ const userSchema = new Schema({
   calendar: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return password === this.password;
+};
+
 module.exports = model('User', userSchema);
