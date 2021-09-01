@@ -6,7 +6,7 @@ const userSchema = new Schema({
   surname: String,
   email: String,
   password: String,
-  gender: String,
+  gender: { type: String, default: 'person' },
   cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
   calendar: { type: Schema.Types.ObjectId, ref: 'User' }
