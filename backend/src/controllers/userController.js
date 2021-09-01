@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
-const refreshTokens = [];
+let refreshTokens = [];
 
 async function getOneById({ params: { userId } }, res) {
   try {
@@ -58,7 +58,7 @@ function logIn({ user }, res) {
     const token = jwt.sign(
       { user: data },
       process.env.JWT_SECRET,
-      { expiresIn: '10m' }
+      { expiresIn: '1m' }
     );
     const refreshToken = jwt.sign(
       { user: data },
@@ -77,10 +77,46 @@ function logIn({ user }, res) {
   }
 }
 
+function tokenRefresh({ body: { refreshToken } }, res) {
+  if (!refreshToken) {
+    return res.sendStatus(401);
+  }
+
+  if (!refreshTokens.includes(refreshToken)) {
+    return res.sendStatus(403);
+  }
+
+  return jwt.verify(refreshToken, process.env.JWT_SECRET, (err, { user }) => {
+    if (err) {
+      return res.sendStatus(403);
+    }
+
+    const data = { _id: user._id, email: user.email };
+
+    const token = jwt.sign(
+      { user: data },
+      process.env.JWT_SECRET,
+      { expiresIn: '5m' }
+    );
+
+    return res.json({
+      token
+    });
+  });
+}
+
+function logOut(req, res) {
+  const { token } = req.body;
+  refreshTokens = refreshTokens.filter((current) => current !== token);
+  res.send('Logout successful');
+}
+
 module.exports = {
   getOneById,
   updateOneById,
   deleteOneById,
   signUp,
-  logIn
+  logIn,
+  logOut,
+  tokenRefresh
 };
