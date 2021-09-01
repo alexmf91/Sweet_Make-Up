@@ -52,29 +52,24 @@ function signUp({ user }, res) {
   });
 }
 
-async function logIn({ user }, res) {
+function logIn({ user }, res) {
   const data = { _id: user._id, email: user.email };
-  try {
-    const token = jwt.sign(
-      { user: data },
-      process.env.JWT_SECRET,
-      { expiresIn: '1m' }
-    );
-    const refreshToken = jwt.sign(
-      { user: data },
-      process.env.JWT_SECRET
-    );
+  const token = jwt.sign(
+    { user: data },
+    process.env.JWT_SECRET,
+    { expiresIn: '1m' }
+  );
+  const refreshToken = jwt.sign(
+    { user: data },
+    process.env.JWT_SECRET
+  );
 
-    refreshTokens.push(refreshToken);
+  refreshTokens.push(refreshToken);
 
-    return res.json({
-      token,
-      refreshToken
-    });
-  } catch (error) {
-    res.status(500);
-    return res.send(error);
-  }
+  return res.json({
+    token,
+    refreshToken
+  });
 }
 
 function tokenRefresh({ body: { refreshToken } }, res) {
