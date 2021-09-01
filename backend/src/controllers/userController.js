@@ -52,7 +52,7 @@ function signUp({ user }, res) {
   });
 }
 
-function logIn({ user }, res) {
+async function logIn({ user }, res) {
   const data = { _id: user._id, email: user.email };
   try {
     const token = jwt.sign(
