@@ -8,7 +8,7 @@ userRouter
   .route('/user/:userId')
   .all(passport.authenticate('jwt', { session: false }))
   .put(userController.updateOneById)
-  .get(userController.getOneById)
+  .get(userController.getOneById, passport.authenticate('jwt', { session: false }))
   .delete(userController.deleteOneById);
 
 userRouter
@@ -20,5 +20,13 @@ userRouter
   .route('/login')
   .all(passport.authenticate('login', { session: false }))
   .post(userController.logIn);
+
+userRouter
+  .route('/logout')
+  .post(userController.logOut);
+
+userRouter
+  .route('/refreshToken')
+  .post(userController.tokenRefresh);
 
 module.exports = userRouter;
