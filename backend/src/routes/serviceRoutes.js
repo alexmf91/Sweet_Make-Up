@@ -5,13 +5,10 @@ const serviceRouter = new Router();
 
 serviceRouter
   .route('/service/:serviceId')
-  .put(serviceController.updateOneById)
-  .get(serviceController.getOneById)
-  .delete(serviceController.deleteOneById);
+  .get(serviceController.getOneById);
 
 serviceRouter
   .route('/service/')
-  .post(serviceController.createOne)
   .get(serviceController.getAll);
 
 module.exports = serviceRouter;

@@ -11,7 +11,6 @@ cartRouter
 
 cartRouter
   .route('/cart/')
-  .post(cartController.createOne)
-  .get(cartController.getAll);
+  .post(cartController.createOne);
 
 module.exports = cartRouter;

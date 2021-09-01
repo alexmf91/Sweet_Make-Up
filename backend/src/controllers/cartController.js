@@ -10,16 +10,6 @@ async function createOne({ body }, res) {
   }
 }
 
-async function getAll({ query }, res) {
-  try {
-    const carts = await Cart.find(query);
-    res.json(carts);
-  } catch (error) {
-    res.status(500);
-    res.send(error);
-  }
-}
-
 async function getOneById({ params: { cartId } }, res) {
   try {
     const carts = await Cart.findById(cartId);
@@ -53,7 +43,6 @@ async function deleteOneById({ params: { cartId } }, res) {
 }
 
 module.exports = {
-  getAll,
   createOne,
   getOneById,
   deleteOneById,
