@@ -1,16 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <hola-mundo />
+  <div class='home'>
+    <AppSweetBanner />
+    <AppAboutBrand />
+      <app-services></app-services>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HolaMundo from "../components/HolaMundo.vue";
+<script lang='ts'>
+import { defineComponent } from 'vue';
+import AppServices from '../components/Services.vue';
+import AppSweetBanner from '../components/AppSweetBanner.vue';
+import AppAboutBrand from '../components/AppAboutBrand.vue';
 
 export default defineComponent({
-  name: "Home",
-  components: { HolaMundo },
+  name: 'Home',
+  components: { AppServices, AppSweetBanner, AppAboutBrand },
 });
 </script>
+
+<style lang='scss' scoped>
+
+</style>
