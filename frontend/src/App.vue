@@ -18,10 +18,9 @@ export default {
 
 <style lang='scss'>
 @import "styles/reset.scss";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family:'Josefin Sans', sans-serif;
   text-align: center;
   color: #2c3e50;
   margin: 0 auto;
