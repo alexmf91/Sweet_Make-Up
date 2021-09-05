@@ -22,6 +22,7 @@
 .about-brand{
     margin: 10rem auto;
     background-color: lightgoldenrodyellow;
+    padding: 3rem 0;
 }
 .about-brand__main-content {
   margin: 3rem auto;
@@ -45,8 +46,8 @@ p {
 }
 .about-brand__image {
   margin: 2rem auto;
-  background-color: lightyellow;
-  width: 30rem;
-  height: 20rem;
+  background-color: rgb(238, 238, 17);
+  width: 60vw;
+  height: 40vw;
 }
 </style>
