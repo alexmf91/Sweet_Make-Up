@@ -23,6 +23,7 @@ export default {
   font-family:'Josefin Sans', sans-serif;
   text-align: center;
   color: #2c3e50;
+  background-color: lightslategrey;
   margin: 0 auto;
   padding: 0;
 }
