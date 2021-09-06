@@ -15,6 +15,7 @@
 <style lang="scss" scoped>
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
+
 .sweet-banner__main-content{
     margin: 3rem auto;
     background-color:rgb(233, 227, 227);
@@ -24,7 +25,7 @@
 h1 {
   color: $primary-color;
   font-size: 10vw;
-  font-weight: bold;
+  font-weight: 400;
 }
 hr{
     margin: 1rem 0;
@@ -34,6 +35,7 @@ hr{
 h2{
   color: $tertiary-color;
   font-size: 3vw;
+  font-weight: 300;
 }
 .sweet-banner__buttons{
     margin: 2rem;
@@ -43,10 +45,12 @@ button{
     background-color: $secondary-color;
     color:white;
     border: none;
-    padding: 0.3rem 0.6rem;
+    text-align: center;
+    padding: 0.7rem 0.6rem 0.2rem 0.6rem;
     margin: 0 2rem;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 4vw;
+    border-radius: 1px;
     &:hover{
       background-color: $secondary-color-hover;
       cursor:pointer;
