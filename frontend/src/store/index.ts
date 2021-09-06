@@ -6,6 +6,7 @@ export default createStore({
     services: [],
     categoryServices: [],
     currentCategory: '',
+    currentService: {},
   },
   mutations: {
     loadServices(state, payload) {
@@ -17,6 +18,9 @@ export default createStore({
     changeCurrentCategory(state, payload) {
       state.currentCategory = payload;
     },
+    loadOneService(state, payload) {
+      state.currentService = payload;
+    },
   },
   actions: {
     async fetchServicesFromApi({ commit }) {
@@ -27,6 +31,14 @@ export default createStore({
       const { data } = await axios.get(`http://localhost:8001/api/service/?type=${query}`);
       commit('loadCategoryServices', data);
       commit('changeCurrentCategory', query);
+    },
+    async fetchOneServiceForNameFromApi({ commit }, query) {
+      const { data } = await axios.get(`http://localhost:8001/api/service/?name=${query}`);
+      commit('loadOneService', data[0]);
+    },
+    async registerUser({ commit }, user) {
+      await axios.post('http://localhost:8001/api/register', user);
+      commit("");
     },
   },
   modules: {
