@@ -2,7 +2,9 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Profile from '../views/Profile.vue';
+import Register from '../views/Register.vue';
 import Service from '../views/Service.vue';
+import ServiceDetails from '../views/ServiceDetails.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,9 +23,20 @@ const routes: Array<RouteRecordRaw> = [
     component: Profile,
   },
   {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+  },
+  {
     path: '/service/:category',
     name: 'service',
     component: Service,
+    props: true,
+  },
+  {
+    path: '/service/:category/:name',
+    name: 'details',
+    component: ServiceDetails,
     props: true,
   },
 ];
