@@ -4,14 +4,15 @@
       <h2>ABOUT BRAND</h2>
       <hr />
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-        hic, fugiat molestiae adipisci deserunt assumenda excepturi, doloribus
-        temporibus inventore a facilis sit ducimus ipsa fuga voluptas commodi
-        possimus repudiandae. Explicabo?
+        Sweet Makeup by Mireia Castellar nace tras 10 años de trayectoria en el
+        ámbito del estilismo y la peluquería. Ofrecemos asesoramiento y
+        estilismo que se adapten a tus necesidades, personalidad y gustos.
+        Brillaras en tu gran día sin dejar de ser tu misma y resaltando tu
+        belleza natural.
       </p>
     </div>
     <div class="about-brand__image">
-      <img src="" alt=""/>
+      <img src="" alt="" />
     </div>
   </div>
 </template>
@@ -19,10 +20,10 @@
 <style lang="scss" scoped>
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
-.about-brand{
-    margin: 10rem auto;
-    background-color: lightgoldenrodyellow;
-    padding: 3rem 0;
+.about-brand {
+  margin: 10rem auto;
+  background-color: lightgoldenrodyellow;
+  padding: 3rem 0;
 }
 .about-brand__main-content {
   margin: 3rem auto;
@@ -33,7 +34,7 @@
 h2 {
   color: $primary-color;
   font-size: 5vw;
-  font-weight: bold;
+  font-weight: 300;
 }
 hr {
   margin: 1rem 0;
@@ -43,6 +44,7 @@ hr {
 p {
   color: $tertiary-color;
   font-size: 3vw;
+  font-weight: 300;
 }
 .about-brand__image {
   margin: 2rem auto;
