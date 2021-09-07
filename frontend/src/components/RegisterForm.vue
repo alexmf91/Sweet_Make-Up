@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login" class="register__form">
+  <form @submit.prevent="register" class="register__form">
     <div class="form__name-surname">
       <input
         class="name-surname__name-field"
@@ -45,7 +45,7 @@ export default defineComponent({
   }),
   methods: {
     ...mapActions(["registerUser"]),
-    login() {
+    register() {
       if (this.password !== this.confirmPassword) {
         this.wrongPassword = true;
       } else {
