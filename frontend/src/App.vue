@@ -23,8 +23,9 @@ export default {
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   color: #2c3e50;
-  background-image: url(https://previews.123rf.com/images/natthanim/natthanim1807/natthanim180700204/105323579-textura-de-pared-de-m%C3%A1rmol-de-oro-rosa-para-obras-de-arte-de-fondo-y-dise%C3%B1o-patr%C3%B3n-sin-fisuras-de-ba.jpg);
+  background-image: url("https://i.ibb.co/M7NQNKh/textura-marmol-dorado-rosado-125540-836.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
   margin: 0 auto;
   padding: 0;
