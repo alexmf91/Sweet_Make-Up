@@ -21,13 +21,12 @@
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 .about-brand {
-  margin: 10rem auto;
-  background-color: lightgoldenrodyellow;
-  padding: 3rem 0;
+  margin: 20rem auto;
+  background-color: rgb(236, 231, 231);
+  padding: 2rem 0;
 }
 .about-brand__main-content {
   margin: 3rem auto;
-  background-color: rgb(233, 227, 227);
   padding: 1.8rem 3rem;
   width: fit-content;
 }
