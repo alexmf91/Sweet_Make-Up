@@ -203,12 +203,21 @@ i {
   .search-bar,
   .user-icon {
     display: none;
-    background-color: violet;
   }
 }
 @media screen and (min-width: 480px) {
   .burger-menu {
     display: none;
+  }
+}
+@media screen and (max-width: 555px) {
+  .desktop-nav-links {
+    zoom: 90%;
+  }
+}
+@media screen and (min-width: 755px) {
+  .desktop-nav-links {
+    zoom: 120%;
   }
 }
 </style>
