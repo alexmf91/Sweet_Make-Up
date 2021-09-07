@@ -68,7 +68,8 @@ function logIn({ user }, res) {
 
   return res.json({
     token,
-    refreshToken
+    refreshToken,
+    user
   });
 }
 
