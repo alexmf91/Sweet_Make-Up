@@ -35,7 +35,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 3rem auto;
+  margin: 3rem auto 0 auto;
 }
 
 .footer-copyrigth {
