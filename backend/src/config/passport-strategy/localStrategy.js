@@ -7,11 +7,19 @@ passport.use(
   new localStrategy.Strategy(
     {
       usernameField: 'email',
-      passwordField: 'password'
+      passwordField: 'password',
+      passReqToCallback: true
     },
-    async (email, password, done) => {
+    async (req, email, password, done) => {
       try {
-        const user = await User.create({ email, password });
+        const user = await User.create({
+          email,
+          password,
+          name: req.body.name,
+          surname: req.body.surname,
+          phone: req.body.phone,
+          cart: req.body.cart
+        });
         return done(null, user);
       } catch (error) {
         return done(error);

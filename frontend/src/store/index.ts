@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { createStore } from 'vuex';
 import axios from 'axios';
 import State from '../types/interface';
@@ -9,7 +10,7 @@ export default createStore({
     currentCategory: '',
     currentService: {},
     currentUser: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "") : "",
-    cart: '',
+    cart: [],
   },
   mutations: {
     loadServices(state: State, payload) {
@@ -31,6 +32,9 @@ export default createStore({
       state.currentUser = payload;
     },
     updateCart(state: State, payload) {
+      state.cart = [...state.cart, payload];
+    },
+    loadCart(state, payload) {
       state.cart = payload;
     },
   },
@@ -49,12 +53,14 @@ export default createStore({
       commit('loadOneService', data[0]);
     },
     async registerUser({ commit }, user) {
-      await axios.post('http://localhost:8001/api/register', user);
-      commit("");
+      const userCart = await axios.post('http://localhost:8001/api/cart');
+      const userWithCart = { ...user, cart: userCart.data._id };
+      await axios.post('http://localhost:8001/api/register', userWithCart);
+      localStorage.setItem("user", JSON.stringify(userWithCart));
+      commit("loadUser", userWithCart);
     },
     async loginUser({ commit }, user) {
       const { data } = await axios.post('http://localhost:8001/api/login', user);
-      console.log(data.user);
       localStorage.setItem("user", JSON.stringify(data.user));
       commit("loadUser", data.user);
     },
@@ -62,8 +68,26 @@ export default createStore({
       const noUser = '';
       commit("emptyUser", noUser);
     },
-    async addServiceToCart({ commit }, service) {
-      commit("updateCart", service);
+    async addServiceToCart({ commit }, { currentUserCart, currentService }) {
+      const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
+      let cartUpdated;
+      const currentCartServices = data.services;
+      if (currentCartServices.some((element: any) => element
+        .service === currentService._id)) {
+        cartUpdated = {
+          services: currentCartServices
+            .map((element: any) => (element.service === currentService._id
+              ? { ...element, amount: element.amount + 1 }
+              : element)),
+        };
+      } else {
+        cartUpdated = {
+          services: [...data.services,
+            { service: currentService._id, amount: 1 }],
+        };
+      }
+      await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
+      commit("loadCart", currentService);
     },
   },
   modules: {

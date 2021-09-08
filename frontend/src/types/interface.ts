@@ -4,7 +4,7 @@ interface State {
     currentCategory: String,
     currentService: Object,
     currentUser: String | Object,
-    cart: String, 
+    cart: any, 
 }
 
 export default State;

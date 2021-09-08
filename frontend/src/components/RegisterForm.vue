@@ -24,7 +24,7 @@
       v-model="confirmPassword"
       placeholder="Confirm Password"
     />
-    <p v-if="wrongPassword">Panita eso esta mal</p>
+    <p v-if="wrongPassword">Ups! El password no coincide... Prueba otra vez</p>
     <button class="form__submit-button" type="submit">Submit</button>
   </form>
 </template>
@@ -55,8 +55,8 @@ export default defineComponent({
           email: this.email,
           phone: this.phone,
           password: this.password,
-          confirmPassword: this.confirmPassword,
         });
+        this.$router.push({ name: "Home" });
         this.wrongPassword = false;
       }
     },
