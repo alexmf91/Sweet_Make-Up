@@ -17,11 +17,13 @@
         <span class="user-icon">
           <i class="fas fa-user fa-lg"></i>
         </span>
-        <div class="user-icon__content">
-          <router-link to="/profile">Profile</router-link>
-          <router-link to="/">Log out</router-link>
-          <router-link to="/profile">Log in</router-link>
-          <router-link to="/register">Sign Up</router-link>
+        <div v-if="currentUser" class="user-icon__content">
+          <router-link to="/profile">Perfil</router-link>
+          <button @click="logOut">Logout</button>
+        </div>
+        <div v-else class="user-icon__content">
+          <router-link to="/login">Login</router-link>
+          <router-link to="/register">Registrate</router-link>
         </div>
       </div>
       <span class="cart-icon button">
@@ -39,21 +41,51 @@
           <router-link class="btn-header button" to="/">Servicios</router-link>
           <router-link class="btn-header button" to="/">Reservas</router-link>
           <router-link class="btn-header button" to="/">Contacto</router-link>
+          <div v-if="currentUser" class="content__user">
+            <router-link to="/profile">Perfil</router-link>
+            <button @click="logOut">Logout</button>
+          </div>
+          <div v-else class="content__user">
+            <router-link to="/login">Login</router-link>
+            <router-link to="/register">Registrate</router-link>
+          </div>
         </div>
       </div>
       <div class="search-bar">
         <span class="search-bar__icon button">
           <i class="fas fa-search fa-lg"></i>
         </span>
-        <input class="search-bar__bar" type="text" placeholder="Search" />
+        <input
+          class="search-bar__bar"
+          v-model="searchValue"
+          type="text"
+          placeholder="Search"
+        />
       </div>
     </nav>
   </header>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "app-header",
+  data: () => ({
+    noUser: "",
+    searchValue: "",
+  }),
+  methods: {
+    ...mapActions(["userLogOut"]),
+    logOut() {
+      this.userLogOut();
+      localStorage.setItem("user", JSON.stringify(this.noUser));
+      this.$router.push({ name: "Home" });
+    },
+  },
+  computed: {
+    ...mapState(["currentUser"]),
+  },
 };
 </script>
 
@@ -68,6 +100,9 @@ header {
   align-items: center;
   height: 4rem;
   margin: 0;
+  position: fixed;
+  top: 0;
+  width: 100%
 }
 button {
   background: none;
@@ -94,7 +129,6 @@ button {
     margin: 0 0.2rem;
     &:hover {
       color: $secondary-color;
-      font-weight: 600;
     }
   }
 }
@@ -125,12 +159,12 @@ button {
   z-index: 9999;
   height: fit-content;
   width: 100px;
-  a {
+  a, button {
     text-decoration: none;
     padding: 3px 0;
-    color:$quartiary-color;
-    &:hover{
-      color:$tertiary-color;
+    color: $quartiary-color;
+    &:hover {
+      color: $tertiary-color;
     }
   }
   &:hover {
@@ -152,21 +186,24 @@ button {
   right: 10px;
   text-decoration: none;
   padding-top: 4px;
+  padding:20px;
   position: absolute;
   top: 100%;
-  background-color: #fff;
+  background-color: rgb(240, 235, 235);
   z-index: 9999;
-  height: 200px;
-  width: 120px;
-  a {
+  height: fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  a, div>a, div>button {
     text-decoration: none;
     color: $quartiary-color;
+    margin:5px;
     &:hover {
       color: $secondary-color;
     }
   }
 }
-.burger-menu:hover .burger-menu__content {
+.burger-menu:hover .burger-menu__content,.content__user {
   display: flex;
   flex-direction: column;
   text-decoration: none;
