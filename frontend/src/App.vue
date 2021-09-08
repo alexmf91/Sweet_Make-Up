@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <router-view class="container"></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <app-footer></app-footer>
   </div>
 </template>
@@ -30,10 +34,15 @@ export default {
   margin: 0 auto;
   padding: 0;
 }
-.container {
-  padding-bottom: 4rem;
-}
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.9s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 #nav {
   padding: 30px;
 }
