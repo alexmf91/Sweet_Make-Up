@@ -1,9 +1,13 @@
 <template>
-  <div>
+  <div class="cart">
     <h1>Cart</h1>
     <ul>
-      <li v-for="service in cart" :key="service"></li>
+      <li v-for="service in cart" :key="service">
+        <p>{{ service.name }}</p>
+        <p>{{ service.price }}</p>
+      </li>
     </ul>
+    <button>Comprar</button>
   </div>
 </template>
 
@@ -17,3 +21,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.cart {
+  background-color: whitesmoke;
+}
+</style>
