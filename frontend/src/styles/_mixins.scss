@@ -1,0 +1,13 @@
+@mixin button($color,$color-hover,$width,$height) {
+  height: $height;
+  width: $width;
+  margin: 0 auto;
+  background-color: $color;
+  border: none;
+  color: white;
+  font-size: 3vw;
+  &:hover {
+    background-color: $color-hover;
+    font-weight: 600;
+  }
+}

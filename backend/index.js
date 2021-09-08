@@ -3,6 +3,7 @@ require('dotenv').config();
 const debug = require('debug')('sweetMakeUp');
 const chalk = require('chalk');
 const morgan = require('morgan');
+const cors = require('cors');
 
 require('./src/config/mongooseConfig');
 require('./src/config/passportConfig');
@@ -10,6 +11,7 @@ require('./src/config/passportConfig');
 const server = express();
 const port = process.env.PORT || 5000;
 
+server.use(cors());
 server.use(morgan('dev'));
 server.use(express.json());
 
