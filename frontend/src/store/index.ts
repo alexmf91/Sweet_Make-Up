@@ -8,7 +8,8 @@ export default createStore({
     categoryServices: [],
     currentCategory: '',
     currentService: {},
-    currentUser: "",
+    currentUser: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "") : "",
+    cart: '',
   },
   mutations: {
     loadServices(state: State, payload) {
@@ -25,6 +26,12 @@ export default createStore({
     },
     loadUser(state: State, payload) {
       state.currentUser = payload;
+    },
+    emptyUser(state, payload) {
+      state.currentUser = payload;
+    },
+    updateCart(state: State, payload) {
+      state.cart = payload;
     },
   },
   actions: {
@@ -47,7 +54,16 @@ export default createStore({
     },
     async loginUser({ commit }, user) {
       const { data } = await axios.post('http://localhost:8001/api/login', user);
+      console.log(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       commit("loadUser", data.user);
+    },
+    userLogOut({ commit }) {
+      const noUser = '';
+      commit("emptyUser", noUser);
+    },
+    async addServiceToCart({ commit }, service) {
+      commit("updateCart", service);
     },
   },
   modules: {
