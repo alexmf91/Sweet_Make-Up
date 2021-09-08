@@ -15,9 +15,9 @@
 
 .services__main-content {
   margin: 3rem auto 0;
-  padding: 5rem 3rem 6rem;
+  padding: 5rem 3rem 12rem;
   width: fit-content;
-  height: 30vw;
+  height: 45vw;
   background-color: white;
 
 }
