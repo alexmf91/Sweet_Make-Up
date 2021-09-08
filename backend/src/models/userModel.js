@@ -4,6 +4,7 @@ const userSchema = new Schema({
   picture: { type: String, default: 'http://placehold.it/32x32' },
   name: String,
   surname: String,
+  phone: String,
   email: String,
   password: String,
   gender: { type: String, default: 'person' },
