@@ -8,7 +8,7 @@
       <p>{{ currentService.price }}</p>
       <button @click="addToCart">Add to Cart</button>
     </div>
-      <Cart />
+    <Cart/>
   </div>
 </template>
 
@@ -32,7 +32,11 @@ export default defineComponent({
       if (!this.currentUser) {
         this.$router.push({ name: "Login" });
       } else {
-        this.addServiceToCart(this.currentService);
+        const currentUserAndService = {
+          currentService: this.currentService,
+          currentUserCart: this.currentUser.cart,
+        };
+        this.addServiceToCart(currentUserAndService);
       }
     },
   },
