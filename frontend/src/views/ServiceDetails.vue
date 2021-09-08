@@ -1,29 +1,55 @@
 <template>
-  <div>
+  <div class="details-view">
     <h1>Hola panitas Aqui estan vuestros current services</h1>
-    <h3>{{ currentService.name }}</h3>
-    <p>{{ currentService.description }}</p>
+    <div class="service-details">
+      <img :src="currentService.picture" alt="" />
+      <h3>{{ currentService.name }}</h3>
+      <p>{{ currentService.description }}</p>
+      <p>{{ currentService.price }}</p>
+      <button @click="addToCart">Add to Cart</button>
+    </div>
+      <Cart />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import { mapState, mapActions } from 'vuex';
-import { useRoute } from 'vue-router';
+import { defineComponent } from "vue";
+import { mapState, mapActions } from "vuex";
+import { useRoute } from "vue-router";
+import Cart from "../components/Cart.vue";
 
 export default defineComponent({
-  name: 'ServiceDetails',
+  name: "ServiceDetails",
+  components: {
+    Cart,
+  },
   computed: {
-    ...mapState(['currentService']),
+    ...mapState(["currentService", "currentUser"]),
   },
   methods: {
-    ...mapActions(['fetchOneServiceForNameFromApi']),
+    ...mapActions(["fetchOneServiceForNameFromApi", "addServiceToCart"]),
+    addToCart() {
+      if (!this.currentUser) {
+        this.$router.push({ name: "Login" });
+      } else {
+        this.addServiceToCart(this.currentService);
+      }
+    },
   },
   mounted() {
     const route = useRoute();
     const { name } = route.params;
-    console.log(name);
     this.fetchOneServiceForNameFromApi(name);
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.details-view {
+  padding-top: 10rem;
+}
+.service-details {
+  background-color: wheat;
+  height: fit-content;
+}
+</style>
