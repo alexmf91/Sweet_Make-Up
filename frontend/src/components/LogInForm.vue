@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-link v-if="user" :to="profile">aaa</router-link>
-    <form @submit.prevent="comboFunction" class="register__form">
+    <form @submit.prevent="login" class="register__form">
       <input type="email" v-model="email" placeholder="Email" required />
       <input
         type="password"
@@ -11,6 +10,7 @@
       />
       <button class="form__submit-button" type="submit">Submit</button>
     </form>
+    <div v-if='somethingWrong'>Ups!Algo ha ido mal, intentalo otra vez.</div>
   </div>
 </template>
 
@@ -22,27 +22,25 @@ export default defineComponent({
   data: () => ({
     email: "",
     password: "",
+    noUser: "",
+    somethingWrong: false,
   }),
   computed: {
     ...mapState(["currentUser"]),
   },
   methods: {
     ...mapActions(["loginUser"]),
-    redirect() {
-      if (this.currentUser) {
-        console.log("HOLAAA", this.currentUser);
+    async login() {
+      try {
+        await this.loginUser({
+          email: this.email,
+          password: this.password,
+        });
         this.$router.push({ name: "Home" });
+        this.somethingWrong = false;
+      } catch (error) {
+        this.somethingWrong = true;
       }
-    },
-    login() {
-      this.loginUser({
-        email: this.email,
-        password: this.password,
-      });
-    },
-    comboFunction() {
-      this.login();
-      this.redirect();
     },
   },
 });
