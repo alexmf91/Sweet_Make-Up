@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Profile from '../views/Profile.vue';
 import Register from '../views/Register.vue';
+import Login from '../views/Login.vue';
 import Service from '../views/Service.vue';
 import ServiceDetails from '../views/ServiceDetails.vue';
 
@@ -26,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/register',
     name: 'Register',
     component: Register,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
   },
   {
     path: '/service/:category',
