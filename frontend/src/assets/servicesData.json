@@ -1,0 +1,134 @@
+    [
+    {
+    "picture": "http://placehold.it/32x32" ,
+    "name": "Maquillaje invitada",
+    "description": "Maquillaje para eventos",
+    "duration": 40,
+    "type": "make_up_and_hairstyles",
+    "price": 35
+    },
+    {
+    "picture": "http://placehold.it/32x32" ,
+    "name": "Maquillaje invitada",
+    "description": "Maquillaje para eventos",
+    "duration": 40,
+    "type": "make_up_and_hairstyles",
+    "price": 35
+    },
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Peinado (Recogido, semirrecogido o moldeado)",
+        "description": "vvvv",
+        "duration": 60,
+        "type": "make_up_and_hairstyles",
+        "price": 35
+        },
+    
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Peinado (Recogido, semirrecogido o moldeado) con prueba incluida",
+        "description": "vvvv",
+        "duration": 120,
+        "type": "make_up_and_hairstyles",
+        "price": 50
+        },
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Maquillaje y peinado (Recogido, semirrecogido o moldeado)",
+        "description": "vvvv",
+        "duration": 120,
+        "type": "make_up_and_hairstyles",
+        "price": 120
+        },
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Maquillaje y peinado (Recogido, semirrecogido o moldeado) con prueba incluida",
+        "description": "vvvv",
+        "duration": 240,
+        "type": "make_up_and_hairstyles",
+        "price": 90
+        },
+    
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Retoque maquillaje y peinado masculino",
+        "description": "vvvv",
+        "duration": 40,
+        "type": "make_up_and_hairstyles",
+        "price": 25
+        },
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Pestañas (Lifting)",
+        "description": "vvvv",
+        "duration": 60,
+        "type": "make_up_and_hairstyles",
+        "price": 35
+        },
+    
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Maquillaje (prueba incluida)",
+        "description": "vvvv",
+        "duration": 180,
+        "type": "beauty_for_brides",
+        "price": 95
+        }, 
+    {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Peinado (prueba incluida)",
+        "description": "vvvv",
+        "duration": 180,
+        "type": "beauty_for_brides",
+        "price": 95
+        },
+    
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Maquillaje  y peinado (pruebas incluidas)",
+        "description": "vvvv",
+        "duration": 300,
+        "type": "beauty_for_brides",
+        "price": 170
+        },
+     {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Retoque novio (Maquillaje y peinado)",
+        "description": "vvvv",
+        "duration": 40,
+        "type": "beauty_for_brides",
+        "price": 25
+        },
+    {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Pestañas (Lifting)",
+        "description": "vvvv",
+        "duration": 60,
+        "type": "beauty_for_brides",
+        "price": 35
+        },
+    {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Beauty corner",
+        "description": "vvvv",
+        "duration": 330,
+        "type": "beauty_corner",
+        "price": 250
+        },
+    {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Hora extra beauty corner",
+        "description": "vvvv",
+        "duration": 60,
+        "type": "beauty_corner",
+        "price": 60
+        },
+    {
+        "picture": "http://placehold.it/32x32" ,
+        "name": "Servicio de peluqueria en bautycorner",
+        "description": "vvvv",
+        "duration": 330,
+        "type": "beauty_corner",
+        "price": 90
+        }  
+      ]
