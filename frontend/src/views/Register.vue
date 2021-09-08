@@ -1,5 +1,5 @@
 <template>
-  <div class='register-view'>
+  <div class="register-view">
     <h2>Register</h2>
     <RegisterForm />
   </div>
@@ -21,7 +21,7 @@ export default defineComponent({
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 
-.register-view{
-    background-color: $primary-color;
+.register-view {
+  background-color: $primary-color;
 }
 </style>
