@@ -12,6 +12,11 @@ export default createStore({
     currentUser: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "") : "",
     cart: [],
   },
+  getters: {
+    getCartServices(state: State){
+      return state.cart?.services?.map((services: any) => services)
+    }
+  },
   mutations: {
     loadServices(state: State, payload) {
       state.services = payload;
@@ -70,13 +75,14 @@ export default createStore({
     },
     async addServiceToCart({ commit }, { currentUserCart, currentService }) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
+      console.log("Esta es la data de addservicetocart", data.services)
       let cartUpdated;
       const currentCartServices = data.services;
       if (currentCartServices.some((element: any) => element
-        .service === currentService._id)) {
+        .service._id === currentService._id)) {
         cartUpdated = {
           services: currentCartServices
-            .map((element: any) => (element.service === currentService._id
+            .map((element: any) => (element.service._id === currentService._id
               ? { ...element, amount: element.amount + 1 }
               : element)),
         };
@@ -86,8 +92,12 @@ export default createStore({
             { service: currentService._id, amount: 1 }],
         };
       }
-      await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
-      commit("loadCart", currentService);
+      const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
+      commit("loadCart", cartUpdatedToRender.data);
+    },
+    async fetchCartFromApi({ commit }, currentUserCart) {
+      const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
+      commit('loadCart', data);
     },
   },
   modules: {
