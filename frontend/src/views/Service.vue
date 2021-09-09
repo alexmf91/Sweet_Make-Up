@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <main class="services-container">
     <h1>{{ name }}</h1>
+    <SearchBar />
     <CategoryServices />
-  </div>
+  </main>
 </template>
 
 <script>
-import CategoryServices from '../components/CategoryServices.vue';
+import CategoryServices from "../components/CategoryServices.vue";
+import SearchBar from "../components/SearchBar.vue";
 
 export default {
-  name: 'service-view',
+  name: "service-view",
   components: {
     CategoryServices,
+    SearchBar,
   },
   props: {
     id: String,
@@ -22,7 +25,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.service {
+.services-container {
   background-color: lightgreen;
+  padding-top: 10rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>
