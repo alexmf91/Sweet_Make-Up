@@ -11,9 +11,11 @@
         belleza natural.
       </p>
     </div>
-    <div class="about-brand__image">
-      <img src="" alt="" />
-    </div>
+    <img
+      class="about-brand__image"
+      src="https://st.depositphotos.com/2884373/4996/i/600/depositphotos_49961447-stock-photo-woman-applying-make-up-for.jpg"
+      alt=""
+    />
   </div>
 </template>
 
@@ -47,8 +49,7 @@ p {
 }
 .about-brand__image {
   margin: 2rem auto;
-  background-color: rgb(238, 238, 17);
-  width: 60vw;
-  height: 40vw;
+  width: 45vw;
+  height: 30vw;
 }
 </style>
