@@ -2,10 +2,6 @@
     <div class="services__main-content">
       <h2>SERVICES</h2>
       <hr />
-      <p>
-        Sweet Makeup by Mireia Castellar nace tras 10 años de trayectoria en el
-        ámbito del estilismo y la peluquería. Ofrecemos asesoramiento.
-      </p>
     </div>
 </template>
 
@@ -15,9 +11,9 @@
 
 .services__main-content {
   margin: 3rem auto 0;
-  padding: 5rem 3rem 12rem;
-  width: fit-content;
-  height: 45vw;
+  padding: 5rem 3rem 8rem;
+  width: 100%;
+  height: fit-content;
   background-color: white;
 
 }
@@ -30,10 +26,5 @@ hr {
   margin: 1rem 0;
   background-color: $primary-color;
   border: solid 1px $primary-color;
-}
-p {
-  color: $primary-color;
-  font-size: 3vw;
-  font-weight: 300;
 }
 </style>
