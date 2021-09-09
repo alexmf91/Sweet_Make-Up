@@ -26,8 +26,9 @@
           <router-link to="/register">Registrate</router-link>
         </div>
       </div>
-      <span class="cart-icon button">
+      <span class="cart-icon">
         <i class="fas fa-shopping-cart fa-lg"></i>
+        <CartHeader class="cart-content" />
       </span>
       <div class="burger-menu">
         <span class="burger-menu_icon">
@@ -68,9 +69,13 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import CartHeader from "./CartHeader.vue";
 
 export default {
   name: "app-header",
+  components: {
+    CartHeader,
+  },
   data: () => ({
     noUser: "",
     searchValue: "",
@@ -102,7 +107,7 @@ header {
   margin: 0;
   position: fixed;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 button {
   background: none;
@@ -159,7 +164,9 @@ button {
   z-index: 9999;
   height: fit-content;
   width: 100px;
-  a, button {
+  border-radius: 10px;
+  a,
+  button {
     text-decoration: none;
     padding: 3px 0;
     color: $quartiary-color;
@@ -177,6 +184,16 @@ button {
   display: flex;
   flex-direction: column;
 }
+.cart-content {
+  display: none;
+  position: absolute;
+  right: 55px;
+  top: 40px;
+}
+
+.cart-icon:hover .cart-content {
+  display: unset;
+}
 .burger-menu {
   position: relative;
 }
@@ -186,7 +203,7 @@ button {
   right: 10px;
   text-decoration: none;
   padding-top: 4px;
-  padding:20px;
+  padding: 20px;
   position: absolute;
   top: 100%;
   background-color: rgb(240, 235, 235);
@@ -194,16 +211,19 @@ button {
   height: fit-content;
   width: fit-content;
   border-radius: 10px;
-  a, div>a, div>button {
+  a,
+  div > a,
+  div > button {
     text-decoration: none;
     color: $quartiary-color;
-    margin:5px;
+    margin: 5px;
     &:hover {
       color: $secondary-color;
     }
   }
 }
-.burger-menu:hover .burger-menu__content,.content__user {
+.burger-menu:hover .burger-menu__content,
+.content__user {
   display: flex;
   flex-direction: column;
   text-decoration: none;
