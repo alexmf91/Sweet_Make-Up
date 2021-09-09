@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section id='services'>
     <ServicesHomeBanner />
     <div class="app-services">
       <service-card
@@ -12,7 +12,7 @@
       >
       </service-card>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
