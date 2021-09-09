@@ -1,10 +1,14 @@
 <template>
   <div class="cart">
     <h1>Cart</h1>
-    <ul>
-      <li v-for="service in cart" :key="service">
-        <p>{{ service.name }}</p>
-        <p>{{ service.price }}</p>
+    <ul class="cart-content">
+      <li v-for="service in getCartServices" :key="service">
+        <p>{{ service.service.name }}</p>
+        <div class="cart-content__amount">
+          <button>-</button>
+          <p>{{ service.amount }}</p>
+          <button>+</button>
+        </div>
       </li>
     </ul>
     <button>Comprar</button>
@@ -13,11 +17,19 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
+  name: "Cart",
   computed: {
-    ...mapState(["cart"]),
+    ...mapState(["cart", "currentUser"]),
+    ...mapGetters(["getCartServices"]),
+  },
+  methods: {
+    ...mapActions(["fetchCartFromApi"]),
+  },
+  mounted() {
+    this.fetchCartFromApi(this.currentUser.cart);
   },
 });
 </script>
@@ -25,5 +37,17 @@ export default defineComponent({
 <style lang="scss" scoped>
 .cart {
   background-color: whitesmoke;
+}
+li {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  &>p,div{
+    padding: 10px;
+  }
+  .cart-content__amount {
+    display: flex;
+    flex-direction: row;
+  }
 }
 </style>
