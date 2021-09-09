@@ -13,9 +13,15 @@ export default createStore({
     cart: [],
   },
   getters: {
-    getCartServices(state: State){
-      return state.cart?.services?.map((services: any) => services)
-    }
+    getCartServices(state: State) {
+      return state.cart?.services?.map((services: any) => services);
+    },
+    calculateTotalCartPrice(state: State) {
+      const totalCartPrice = state.cart?.services?.reduce((
+        acc: any, service: any,
+      ) => acc + service.amount * service.service.price, 0);
+      return totalCartPrice;
+    },
   },
   mutations: {
     loadServices(state: State, payload) {
@@ -75,7 +81,6 @@ export default createStore({
     },
     async addServiceToCart({ commit }, { currentUserCart, currentService }) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
-      console.log("Esta es la data de addservicetocart", data.services)
       let cartUpdated;
       const currentCartServices = data.services;
       if (currentCartServices.some((element: any) => element
@@ -95,11 +100,40 @@ export default createStore({
       const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
       commit("loadCart", cartUpdatedToRender.data);
     },
+    async removeServiceToCart({ commit }, { currentUserCart, currentService }) {
+      const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
+      let cartUpdated;
+      const currentCartServices = data.services;
+      const serviceToUpdate = currentCartServices
+        .find((services: any) => services.service._id === currentService._id);
+      if (serviceToUpdate.amount > 1) {
+        serviceToUpdate.amount -= 1;
+        cartUpdated = {
+          services: currentCartServices,
+        };
+      } else {
+        cartUpdated = {
+          services: currentCartServices
+            .filter((element:any) => element.service._id !== currentService._id),
+        };
+      }
+      const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
+      commit("loadCart", cartUpdatedToRender.data);
+    },
+    async deleteServiceFromCart({ commit }, { currentUserCart, currentService }) {
+      const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
+      const currentCartServices = data.services;
+      console.log(currentCartServices);
+      const cartUpdated = {
+        services: currentCartServices
+          .filter((element:any) => element.service._id !== currentService._id),
+      };
+      const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
+      commit("loadCart", cartUpdatedToRender.data);
+    },
     async fetchCartFromApi({ commit }, currentUserCart) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
       commit('loadCart', data);
     },
-  },
-  modules: {
   },
 });
