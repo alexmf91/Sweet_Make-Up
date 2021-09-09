@@ -8,7 +8,7 @@
       <p>{{ currentService.price }}</p>
       <button @click="addToCart">Add to Cart</button>
     </div>
-    <Cart/>
+    <Cart />
   </div>
 </template>
 
@@ -37,6 +37,7 @@ export default defineComponent({
           currentUserCart: this.currentUser.cart,
         };
         this.addServiceToCart(currentUserAndService);
+        this.$toast("Añadido al carrito");
       }
     },
   },
