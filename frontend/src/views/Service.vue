@@ -1,20 +1,17 @@
 <template>
   <main class="services-container">
     <h1>{{ name }}</h1>
-    <SearchBar />
     <CategoryServices />
   </main>
 </template>
 
 <script>
 import CategoryServices from "../components/CategoryServices.vue";
-import SearchBar from "../components/SearchBar.vue";
 
 export default {
   name: "service-view",
   components: {
     CategoryServices,
-    SearchBar,
   },
   props: {
     id: String,
