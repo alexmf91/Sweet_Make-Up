@@ -10,7 +10,7 @@
 @import "../styles/colors.scss";
 
 .services__main-content {
-  margin: 3rem auto 0;
+  margin: 50rem auto 0;
   padding: 5rem 3rem 8rem;
   width: 100%;
   height: fit-content;
