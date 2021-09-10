@@ -22,6 +22,9 @@ export default createStore({
       ) => acc + service.amount * service.service.price, 0);
       return totalCartPrice;
     },
+    calculateCartQuantityItems(state: State) {
+      return state.cart?.services?.length;
+    },
   },
   mutations: {
     loadServices(state: State, payload) {
