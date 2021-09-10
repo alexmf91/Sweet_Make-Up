@@ -10,7 +10,9 @@
       </li>
     </ul>
     <div class="cart_nav">
-      <button>Carrito<i class="fas fa-shopping-cart"></i></button>
+      <router-link to="/Cart">
+        <button>Carrito<i class="fas fa-shopping-cart"></i></button>
+      </router-link>
       <span
         >TOTAL: <span class="price">{{ calculateTotalCartPrice }} €</span>
       </span>
