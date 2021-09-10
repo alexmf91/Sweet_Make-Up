@@ -7,6 +7,7 @@ import Login from '../views/Login.vue';
 import Service from '../views/Service.vue';
 import ServiceDetails from '../views/ServiceDetails.vue';
 import Cart from '../views/Cart.vue';
+import Search from '../views/Search.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -50,6 +51,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/cart',
     name: 'Cart',
     component: Cart,
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search,
   },
 ];
 
