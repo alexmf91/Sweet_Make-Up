@@ -6,6 +6,7 @@ import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
 import Service from '../views/Service.vue';
 import ServiceDetails from '../views/ServiceDetails.vue';
+import Cart from '../views/Cart.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -44,6 +45,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'details',
     component: ServiceDetails,
     props: true,
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart,
   },
 ];
 
