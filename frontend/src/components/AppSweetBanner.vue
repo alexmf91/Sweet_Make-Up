@@ -17,7 +17,7 @@
 @import "../styles/colors.scss";
 
 .sweet-banner__main-content{
-    margin: 0 auto;
+    margin: 4rem auto;
     background-color:rgb(233, 227, 227);
     padding: 1.8rem 3rem;
     width: fit-content;
