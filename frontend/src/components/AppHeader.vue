@@ -1,16 +1,18 @@
 <template>
   <header>
-    <router-link class="btn-header button" to="/">
+    <router-link class="btn-header button" to="/" @click="scrollToTop">
       <img class="main-logo" src="../assets/main-logo.svg" alt="" />
     </router-link>
     <nav class="desktop-nav-links">
-      <router-link class="btn-header button" to="/">Home</router-link>
-      <router-link class="btn-header button" to="/Profile"
-        >Nosotros</router-link
+      <router-link class="btn-header button" to="/" @click="scrollToTop"
+        >Home
+      </router-link>
+      <a class="btn-header button" href="#about">About</a>
+      <a class="btn-header button" href="#services">Servicios</a>
+      <router-link class="btn-header button" to="/" @click="scrollToTop"
+        >Reservas</router-link
       >
-      <router-link class="btn-header button" to="/">Servicios</router-link>
-      <router-link class="btn-header button" to="/">Reservas</router-link>
-      <router-link class="btn-header button" to="/">Contacto</router-link>
+      <a class="btn-header button" href="#footer">Contacto</a>
     </nav>
     <nav class="mobile-nav-links">
       <div class="mobile-nav-links__user">
@@ -18,16 +20,21 @@
           <i class="fas fa-user fa-lg"></i>
         </span>
         <div v-if="currentUser" class="user-icon__content">
-          <router-link to="/profile">Perfil</router-link>
+          <router-link to="/profile" @click="scrollToTop">Perfil</router-link>
           <button @click="logOut">Logout</button>
         </div>
         <div v-else class="user-icon__content">
-          <router-link to="/login">Login</router-link>
-          <router-link to="/register">Registrate</router-link>
+          <router-link to="/login" @click="scrollToTop">Login</router-link>
+          <router-link to="/register" @click="scrollToTop"
+            >Registrate</router-link
+          >
         </div>
       </div>
       <span class="cart-icon">
         <i class="fas fa-shopping-cart fa-lg"></i>
+        <span class="cart-icon__quantity">
+          {{ calculateCartQuantityItems }}
+        </span>
         <CartHeader class="cart-content" />
       </span>
       <div class="burger-menu">
@@ -35,40 +42,40 @@
           <i class="fas fa-bars fa-lg"></i>
         </span>
         <div class="burger-menu__content">
-          <router-link class="btn-header button" to="/">Home</router-link>
-          <router-link class="btn-header button" to="/Profile"
-            >Nosotros</router-link
+          <router-link class="btn-header button" to="/" @click="scrollToTop"
+            >Home</router-link
           >
-          <router-link class="btn-header button" to="/">Servicios</router-link>
-          <router-link class="btn-header button" to="/">Reservas</router-link>
-          <router-link class="btn-header button" to="/">Contacto</router-link>
+          <a class="btn-header button" href="#about">About</a>
+          <a class="btn-header button" href="#services">Servicios</a>
+          <router-link class="btn-header button" to="/" @click="scrollToTop"
+            >Reservas</router-link
+          >
+          <a class="btn-header button" href="#footer">Contacto</a>
           <div v-if="currentUser" class="content__user">
-            <router-link to="/profile">Perfil</router-link>
+            <router-link to="/profile" @click="scrollToTop">Perfil</router-link>
             <button @click="logOut">Logout</button>
           </div>
           <div v-else class="content__user">
-            <router-link to="/login">Login</router-link>
-            <router-link to="/register">Registrate</router-link>
+            <router-link to="/login" @click="scrollToTop">Login</router-link>
+            <router-link to="/register" @click="scrollToTop"
+              >Registrate</router-link
+            >
           </div>
         </div>
       </div>
       <div class="search-bar">
-        <span class="search-bar__icon button">
-          <i class="fas fa-search fa-lg"></i>
-        </span>
-        <input
-          class="search-bar__bar"
-          v-model="searchValue"
-          type="text"
-          placeholder="Search"
-        />
+        <router-link to="/Search">
+          <span class="search-bar__icon button">
+            <i class="fas fa-search fa-lg"></i>
+          </span>
+        </router-link>
       </div>
     </nav>
   </header>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import CartHeader from "./CartHeader.vue";
 
 export default {
@@ -78,8 +85,11 @@ export default {
   },
   data: () => ({
     noUser: "",
-    searchValue: "",
   }),
+  computed: {
+    ...mapState(["currentUser"]),
+    ...mapGetters(["calculateCartQuantityItems"]),
+  },
   methods: {
     ...mapActions(["userLogOut"]),
     logOut() {
@@ -87,9 +97,9 @@ export default {
       localStorage.setItem("user", JSON.stringify(this.noUser));
       this.$router.push({ name: "Home" });
     },
-  },
-  computed: {
-    ...mapState(["currentUser"]),
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
@@ -190,7 +200,15 @@ button {
   right: 55px;
   top: 40px;
 }
-
+.cart-icon__quantity {
+  position: absolute;
+  right: 47px;
+  top: 37px;
+  background-color: $sixtiary-color;
+  border-radius: 10px;
+  width: 15px;
+  height: 15px;
+}
 .cart-icon:hover .cart-content {
   display: unset;
 }
