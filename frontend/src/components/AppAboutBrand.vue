@@ -1,5 +1,5 @@
 <template>
-  <div class="about-brand">
+  <section id='about' class="about-brand">
     <div class="about-brand__main-content">
       <h2>ABOUT BRAND</h2>
       <hr />
@@ -16,14 +16,14 @@
       src="https://st.depositphotos.com/2884373/4996/i/600/depositphotos_49961447-stock-photo-woman-applying-make-up-for.jpg"
       alt=""
     />
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 .about-brand {
-  margin: 20rem auto;
+  margin: 50rem auto;
   background-color: rgb(236, 231, 231);
   padding: 2rem 0;
 }
