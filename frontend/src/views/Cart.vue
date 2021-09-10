@@ -188,8 +188,8 @@ li {
 .cart__totalprice {
   display: flex;
   align-items: flex-end;
-  justify-content:flex-start;
-  width: 160px;
+  justify-content:center;
+  width: 190px;
   flex-direction: flex-end;
   padding: 20px;
   margin: 30px auto;
