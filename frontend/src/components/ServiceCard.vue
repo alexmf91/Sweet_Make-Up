@@ -5,6 +5,7 @@
       <router-link
         class="service-info__link"
         :to="{ name: 'service', params: { name, id, category } }"
+        @click="scrollToTop"
       >
         <button>More</button>
       </router-link>
@@ -21,6 +22,11 @@ export default {
     name: String,
     category: String,
     image: String,
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
@@ -58,7 +64,7 @@ export default {
     height: 35vw;
   }
 }
-.service-card.beauty_for_brides{
+.service-card.beauty_for_brides {
   flex-direction: row-reverse;
 }
 </style>
