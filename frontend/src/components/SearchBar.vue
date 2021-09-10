@@ -2,16 +2,19 @@
   <div class="search-bar">
     <div class="search-bar__search-input">
       <input type="text" />
-      <button>O</button>
+      <button><i class="fas fa-search fa-lg"></i></button>
     </div>
-    <div class="search-bar__categorys">
-      <span>Categorias</span>
-      <button>V</button>
-    </div>
-    <div class="search-bar__sort">
-      <span>Ordenar</span>
-      <button>V</button>
-    </div>
+    <select class="search-bar__categorys" name="Categorias" id="">
+      <option selected disabled value="">Categorias</option>
+      <option value="">Maquillaje y peinados para eventos</option>
+      <option value="">Belleza para novias</option>
+      <option value="">Beauty corner</option>
+    </select>
+    <select class="search-bar__sort" name="sort" id="">
+      <option selected disabled value="">Ordenar</option>
+      <option value="">Por precio ascendente</option>
+      <option value="">Por precio descendente</option>
+    </select>
   </div>
 </template>
 
@@ -36,23 +39,42 @@
       height: 25px;
       width: 30vw;
       margin-right: 2px;
+      max-width: 518px;
     }
-    button{
+    button {
       background-color: $primary-color;
       margin-left: 2px;
       border: none;
       width: 25px;
       height: 25px;
+      color: white;
     }
   }
-  &__categorys, &__sort{
+  &__categorys,
+  &__sort {
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
+    background-color: $sixtiary-color;
+    align-items: center;
+    height: 25px;
+    border: none;
+    button {
+      border: none;
+      background: transparent;
       display: flex;
-      width: 100px;
-      justify-content: center;
-      background-color: $sixtiary-color;
-      align-items: center;
-      height: 25px;
+      &:focus-within {
+        outline: $primary-color-hover;
+        border: 2px solid $primary-color-hover;
+      }
+      i {
+        align-items: center;
+        margin: 3px 3px 6px;
+      }
+    }
   }
-
+}
+i {
+  font-family: "Font Awesome 5 Free";
 }
 </style>
