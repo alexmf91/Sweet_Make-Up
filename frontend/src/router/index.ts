@@ -56,6 +56,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/search',
     name: 'Search',
     component: Search,
+    props: true,
   },
 ];
 

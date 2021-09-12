@@ -1,30 +1,41 @@
 <template>
   <div class="search-view">
-    <h2>Services</h2>
+    <h2 class="search-view__title">
+      Busca el nombre del servicio que deseas..
+    </h2>
     <SearchBar />
     <ul>
-      <li v-for="service in services" :key="service.name">
+      <li
+        v-for="service in filteredServices"
+        :key="service.name"
+        :name="service.name"
+        :category="service.type"
+      >
+        <img :src="service.picture" alt="" />
         <p>{{ service.name }}</p>
+        <router-link
+          class="service-card"
+          :to="'/service/' + service.type + '/' + service.name"
+        >
+          <button>Detalles</button>
+        </router-link>
       </li>
     </ul>
-    <CategoryServices />
   </div>
 </template>
 
 <script lang='ts'>
 import { defineComponent } from "vue";
-import { mapState, mapActions } from "vuex";
-import CategoryServices from "../components/CategoryServices.vue";
+import { mapActions, mapGetters } from "vuex";
 import SearchBar from "../components/SearchBar.vue";
 
 export default defineComponent({
   name: "Services",
   components: {
     SearchBar,
-    CategoryServices,
   },
   computed: {
-    ...mapState(["services"]),
+    ...mapGetters(["filteredServices"]),
   },
   methods: {
     ...mapActions(["fetchServicesFromApi"]),
@@ -36,17 +47,69 @@ export default defineComponent({
 </script>
 
 <style lang='scss' scoped>
-.search-view{
-    padding-top: 10rem;
-    margin: 0 auto;
+@import "../styles/reset.scss";
+@import "../styles/colors.scss";
+@import "../styles/mixins.scss";
+
+.search-view {
+  padding: 20px;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  h2 {
+    color: $secondary-color;
+    font-size: 5vw;
+    font-weight: 300;
+    margin: 50px 0;
+  }
+}
+ul {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  justify-content: center;
+  max-width: 64rem;
+  li {
     display: flex;
     flex-direction: column;
-}
-
-ul {
-  background-color: violet;
-  li {
-    background-color: wheat;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    background-color: rgb(233, 233, 233);
+    list-style: none;
+    text-decoration: none;
+    color: $primary-color;
+    margin: 20px;
+    width: 35vw;
+    max-width: 270px;
+    height: 40vw;
+    max-height: 320px;
+    padding: 0.5vw;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    img {
+      margin: 0 auto;
+      width: 28vw;
+      height: 20vw;
+      max-height: 195px;
+      max-width: 225px;
+    }
+    p {
+      font-size: 2vw;
+    }
+    button {
+      @include button($primary-color, $primary-color-hover, 10vw, 4vw);
+      font-size: 2vw;
+      max-width: 75px;
+      max-height: 25px;
+    }
+    @media screen and(min-width: 720px) {
+      button,
+      p {
+        font-size: 14.5px;
+      }
+    }
   }
 }
 </style>

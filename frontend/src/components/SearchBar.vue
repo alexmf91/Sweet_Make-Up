@@ -1,23 +1,55 @@
 <template>
   <div class="search-bar">
     <div class="search-bar__search-input">
-      <input type="text" />
+      <input
+        type="text"
+        v-model="searchString"
+        v-on:input="filterServices(searchString)"
+      />
       <button><i class="fas fa-search fa-lg"></i></button>
     </div>
-    <select class="search-bar__categorys" name="Categorias" id="">
+    <select
+      v-model="typeSelected"
+      class="search-bar__categorys"
+      name="Categorias"
+      v-bind="filterByCategory(typeSelected)"
+    >
       <option selected disabled value="">Categorias</option>
-      <option value="">Maquillaje y peinados para eventos</option>
-      <option value="">Belleza para novias</option>
-      <option value="">Beauty corner</option>
+      <option value="make_up_and_hairstyles">
+        Maquillaje y peinados para eventos
+      </option>
+      <option value="beauty_for_brides">Belleza para novias</option>
+      <option value="beauty_corner">Beauty corner</option>
     </select>
-    <select class="search-bar__sort" name="sort" id="">
+    <select
+      class="search-bar__sort"
+      name="sort"
+      v-model="sortPriceSelected"
+      v-bind="sortByPrice(sortPriceSelected)"
+    >
       <option selected disabled value="">Ordenar</option>
-      <option value="">Por precio ascendente</option>
-      <option value="">Por precio descendente</option>
+      <option value="rising">Por precio ascendente</option>
+      <option value="descending">Por precio descendente</option>
     </select>
+    <p>{{ sortPriceSelected }}</p>
   </div>
 </template>
 
+<script>
+import { mapActions } from "vuex";
+
+export default {
+  name: "SearchBar",
+  data: () => ({
+    searchString: "",
+    typeSelected: "",
+    sortPriceSelected: "",
+  }),
+  methods: {
+    ...mapActions(["filterServices", "filterByCategory", "sortByPrice"]),
+  },
+};
+</script>
 <style lang="scss" scoped>
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
@@ -27,12 +59,13 @@
   align-self: center;
   justify-content: space-evenly;
   align-items: center;
-  width: 95%;
-  max-width: 850px;
+  width: 100%;
+  max-width: 890px;
   min-width: 393px;
   background-color: white;
   padding: 0.8rem;
   &__search-input {
+    display: flex;
     input {
       background-color: $sixtiary-color;
       border: none;
