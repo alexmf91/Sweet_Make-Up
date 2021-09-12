@@ -59,6 +59,9 @@ li {
     display: flex;
     align-items: center;
     padding: 5px;
+    img{
+      width: 50px;
+    }
     span {
       padding: 0 8px;
       color: $quartiary-color;
