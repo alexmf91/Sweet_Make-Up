@@ -69,7 +69,6 @@ export default defineComponent({
 
 .details-view {
   padding: 7rem 0;
-  background: lightcyan;
   .details-view-content {
     border-radius: 15px;
     padding: 5px;
