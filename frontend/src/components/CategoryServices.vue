@@ -1,6 +1,5 @@
 <template>
   <div class="category-services">
-    <h2>Category Services Component</h2>
     <ul>
       <li
         v-for="service in categoryServices"
@@ -48,31 +47,29 @@ export default defineComponent({
 @import "../styles/mixins.scss";
 
 .category-services {
-  background-color: salmon;
   padding: 20px;
 }
 ul {
-  background-color: violet;
   text-decoration: none;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: center;
-  max-width: 53rem;
+  max-width: 74rem;
   li {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: white;
     margin: 0 auto;
-    background-color: rgb(233, 233, 233);
     list-style: none;
     text-decoration: none;
     color: $primary-color;
-    margin: 10px;
+    margin: 20px;
     width: 35vw;
-    max-width: 240px;
+    max-width: 350px;
     height: 40vw;
-    max-height: 290px;
+    max-height: 400px;
     padding: 0.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -80,8 +77,8 @@ ul {
       margin: 0 auto;
       width: 28vw;
       height: 20vw;
-      max-height: 155px;
-      max-width: 185px;
+      max-height: 215px;
+      max-width: 295px;
     }
     p {
       font-size: 2vw;
@@ -89,13 +86,13 @@ ul {
     button {
       @include button($primary-color, $primary-color-hover, 10vw, 4vw);
       font-size: 2vw;
-      max-width: 75px;
-      max-height: 25px;
+      max-width: 85px;
+      max-height: 35px;
     }
     @media screen and(min-width: 720px) {
       button,
       p {
-        font-size: 14.5px;
+        font-size: 19.5px;
       }
     }
   }
