@@ -1,6 +1,6 @@
 <template>
     <div class="services__main-content">
-      <h2>SERVICES</h2>
+      <h2>SERVICIOS</h2>
       <hr />
     </div>
 </template>
@@ -11,8 +11,8 @@
 
 .services__main-content {
   margin: 50rem auto 0;
-  padding: 5rem 3rem 8rem;
-  width: 100%;
+  padding: 3rem 3rem 3rem;
+  width: 90%;
   height: fit-content;
   background-color: white;
 
