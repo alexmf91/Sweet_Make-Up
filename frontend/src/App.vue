@@ -27,7 +27,7 @@ export default {
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   color: #2c3e50;
-  background-image: url("https://i.ibb.co/sFgg4S9/Whats-App-Image-2021-09-08-at-23-06-01.jpg");
+  background-image: url("https://www.wallpapertip.com/wmimgs/1-18588_wallpaper-rose-gold-marble-android-2019-android-wallpapers.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
