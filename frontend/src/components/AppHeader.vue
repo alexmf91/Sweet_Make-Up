@@ -199,12 +199,13 @@ button {
   position: absolute;
   right: 55px;
   top: 40px;
+  z-index: 2;
 }
 .cart-icon__quantity {
   position: absolute;
-  right: 47px;
-  top: 37px;
-  background-color: $sixtiary-color;
+  right: 43px;
+  top: 12px;
+  background-color: white;
   border-radius: 10px;
   width: 15px;
   height: 15px;
