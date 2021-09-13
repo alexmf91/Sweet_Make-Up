@@ -1,7 +1,10 @@
 /* eslint-disable no-underscore-dangle */
-import { createStore } from 'vuex';
+import { createStore, ActionContext } from 'vuex';
 import axios from 'axios';
-import State from '../types/interface';
+import {
+  State, RegisterUser, LoginUser,
+  Service, User, Cart, CartService,
+} from '../types/interface';
 
 export default createStore({
   state: {
@@ -16,37 +19,37 @@ export default createStore({
     selectedSortPrice: '',
   },
   getters: {
-    getCartServices(state: State) {
-      return state.cart?.services?.map((services: any) => services);
+    getCartServices(state: State): Array <Service> {
+      return state.cart?.services?.map((services: Service) => services);
     },
-    calculateTotalCartPrice(state: State) {
+    calculateTotalCartPrice(state: State): Array <CartService> {
       const totalCartPrice = state.cart?.services?.reduce((
-        acc: any, service: any,
+        acc: number, service: any,
       ) => acc + service.amount * service.service.price, 0);
       return totalCartPrice;
     },
-    calculateCartQuantityItems(state: State) {
+    calculateCartQuantityItems(state: State):Array<CartService> {
       return state.cart?.services?.length;
     },
     filteredServices:
-    (state: State) => {
+    (state: State): Array<Service> => {
       let filteredServicesByCategory = state.services
-        .filter((service: any) => service.name
+        .filter((service: Service) => service.name
           .toLowerCase().includes(state.keyword.toLowerCase()));
       if (state.selectedCategory) {
         filteredServicesByCategory = state.services
-          .filter((service: any) => service
+          .filter((service: Service) => service
             .name.toLowerCase().includes(state.keyword.toLowerCase()))
-          .filter((service: any) => service.type === state.selectedCategory);
+          .filter((service: Service) => service.type === state.selectedCategory);
       }
       switch (state.selectedSortPrice) {
         case "rising":
-          filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA,
-            serviceB) => serviceA.price - serviceB.price);
+          filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA:any,
+            serviceB:any) => serviceA.price - serviceB.price);
           break;
         case "descending":
-          filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA,
-            serviceB) => serviceB.price - serviceA.price);
+          filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA:any,
+            serviceB:any) => serviceB.price - serviceA.price);
           break;
         default:
           break;
@@ -55,71 +58,72 @@ export default createStore({
     },
   },
   mutations: {
-    loadServices(state: State, payload) {
+    loadServices(state: State, payload: Array<Service>) {
       state.services = payload;
     },
-    loadCategoryServices(state: State, payload) {
+    loadCategoryServices(state: State, payload: Array<Service>) {
       state.categoryServices = payload;
     },
-    changeCurrentCategory(state: State, payload) {
+    changeCurrentCategory(state: State, payload: string) {
       state.currentCategory = payload;
     },
-    loadOneService(state: State, payload) {
+    loadOneService(state: State, payload: Service) {
       state.currentService = payload;
     },
-    loadUser(state: State, payload) {
+    loadUser(state: State, payload: User) {
       state.currentUser = payload;
     },
-    emptyUser(state, payload) {
+    emptyUser(state, payload: string) {
       state.currentUser = payload;
     },
-    updateCart(state: State, payload) {
+    updateCart(state: State, payload: CartService) {
       state.cart = [...state.cart, payload];
     },
-    loadCart(state, payload) {
+    loadCart(state, payload: Cart) {
       state.cart = payload;
     },
-    loadKeyword(state, payload) {
+    loadKeyword(state, payload: string) {
       state.keyword = payload;
     },
-    loadSelectedCategory(state, payload) {
+    loadSelectedCategory(state, payload: string) {
       state.selectedCategory = payload;
     },
-    loadSortType(state, payload) {
+    loadSortType(state, payload: string) {
       state.selectedSortPrice = payload;
     },
   },
   actions: {
-    async fetchServicesFromApi({ commit }) {
+    async fetchServicesFromApi({ commit }:ActionContext<State, State>) {
       const { data } = await axios.get('http://localhost:8001/api/service');
       commit('loadServices', data);
     },
-    async fetchServicesForCategoryFromApi({ commit }, query: string) {
+    async fetchServicesForCategoryFromApi({ commit }:ActionContext<State, State>, query: string) {
       const { data } = await axios.get(`http://localhost:8001/api/service/?type=${query}`);
       commit('loadCategoryServices', data);
       commit('changeCurrentCategory', query);
     },
-    async fetchOneServiceForNameFromApi({ commit }, query: string) {
+    async fetchOneServiceForNameFromApi({ commit }:ActionContext<State, State>, query: string) {
       const { data } = await axios.get(`http://localhost:8001/api/service/?name=${query}`);
       commit('loadOneService', data[0]);
     },
-    async registerUser({ commit }, user) {
+    async registerUser({ commit }:ActionContext<State, State>, user: RegisterUser) {
       const userCart = await axios.post('http://localhost:8001/api/cart');
       const userWithCart = { ...user, cart: userCart.data._id };
       await axios.post('http://localhost:8001/api/register', userWithCart);
       localStorage.setItem("user", JSON.stringify(userWithCart));
       commit("loadUser", userWithCart);
     },
-    async loginUser({ commit }, user) {
+    async loginUser({ commit }:ActionContext<State, State>, user: LoginUser) {
       const { data } = await axios.post('http://localhost:8001/api/login', user);
       localStorage.setItem("user", JSON.stringify(data.user));
       commit("loadUser", data.user);
     },
-    userLogOut({ commit }) {
+    userLogOut({ commit }:ActionContext<State, State>) {
       const noUser = '';
       commit("emptyUser", noUser);
     },
-    async addServiceToCart({ commit }, { currentUserCart, currentService }) {
+    async addServiceToCart({ commit }:ActionContext<State, State>,
+      { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
       let cartUpdated;
       const currentCartServices = data.services;
@@ -140,7 +144,8 @@ export default createStore({
       const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
       commit("loadCart", cartUpdatedToRender.data);
     },
-    async removeServiceToCart({ commit }, { currentUserCart, currentService }) {
+    async removeServiceToCart({ commit }:ActionContext<State, State>,
+      { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
       let cartUpdated;
       const currentCartServices = data.services;
@@ -160,7 +165,8 @@ export default createStore({
       const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
       commit("loadCart", cartUpdatedToRender.data);
     },
-    async deleteServiceFromCart({ commit }, { currentUserCart, currentService }) {
+    async deleteServiceFromCart({ commit }:ActionContext<State, State>,
+      { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
       const currentCartServices = data.services;
       console.log(currentCartServices);
@@ -171,17 +177,17 @@ export default createStore({
       const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
       commit("loadCart", cartUpdatedToRender.data);
     },
-    async fetchCartFromApi({ commit }, currentUserCart) {
+    async fetchCartFromApi({ commit }:ActionContext<State, State>, currentUserCart: string) {
       const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
       commit('loadCart', data);
     },
-    filterServices({ commit }, keyword) {
+    filterServices({ commit }:ActionContext<State, State>, keyword: string) {
       commit('loadKeyword', keyword);
     },
-    filterByCategory({ commit }, category) {
+    filterByCategory({ commit }:ActionContext<State, State>, category: string) {
       commit('loadSelectedCategory', category);
     },
-    sortByPrice({ commit }, sortType) {
+    sortByPrice({ commit }:ActionContext<State, State>, sortType: string) {
       commit('loadSortType', sortType);
     },
   },
