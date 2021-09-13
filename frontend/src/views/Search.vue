@@ -15,6 +15,7 @@
         <p>{{ service.name }}</p>
         <router-link
           class="service-card"
+          @click="scrollToTop"
           :to="'/service/' + service.type + '/' + service.name"
         >
           <button>Detalles</button>
@@ -39,6 +40,9 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchServicesFromApi"]),
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     this.fetchServicesFromApi();

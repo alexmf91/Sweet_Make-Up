@@ -11,9 +11,10 @@
         <p>{{ service.name }}</p>
         <router-link
           class="service-card"
+          @click="scrollToTop"
           :to="currentCategory + '/' + service.name"
         >
-          <button>Detalles</button>
+          <button >Detalles</button>
         </router-link>
       </li>
     </ul>
@@ -32,6 +33,9 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchServicesForCategoryFromApi"]),
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     const route = useRoute();
