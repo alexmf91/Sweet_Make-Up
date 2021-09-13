@@ -30,7 +30,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  background-color: wheat;
   padding: 4rem 0;
 }
 </style>
