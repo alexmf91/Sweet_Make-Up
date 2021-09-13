@@ -31,7 +31,6 @@
       <option value="rising">Por precio ascendente</option>
       <option value="descending">Por precio descendente</option>
     </select>
-    <p>{{ sortPriceSelected }}</p>
   </div>
 </template>
 
