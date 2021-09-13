@@ -12,7 +12,7 @@ async function createOne({ body }, res) {
 
 async function getOneById({ params: { cartId } }, res) {
   try {
-    const carts = await Cart.findById(cartId);
+    const carts = await Cart.findById(cartId).populate('services.service');
     res.json(carts);
   } catch (error) {
     res.status(500);
@@ -23,7 +23,8 @@ async function getOneById({ params: { cartId } }, res) {
 async function updateOneById({ body, params: { cartId } }, res) {
   try {
     const updatedCart = await Cart.findByIdAndUpdate(cartId,
-      body, { new: true, useFindAndModify: false });
+      body, { new: true, useFindAndModify: false })
+      .populate('services.service');
     res.json(updatedCart);
   } catch (error) {
     res.status(500);

@@ -1,5 +1,5 @@
 <template>
-  <div class="about-brand">
+  <section id='about' class="about-brand">
     <div class="about-brand__main-content">
       <h2>ABOUT BRAND</h2>
       <hr />
@@ -11,17 +11,19 @@
         belleza natural.
       </p>
     </div>
-    <div class="about-brand__image">
-      <img src="" alt="" />
-    </div>
-  </div>
+    <img
+      class="about-brand__image"
+      src="https://st.depositphotos.com/2884373/4996/i/600/depositphotos_49961447-stock-photo-woman-applying-make-up-for.jpg"
+      alt=""
+    />
+  </section>
 </template>
 
 <style lang="scss" scoped>
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 .about-brand {
-  margin: 20rem auto;
+  margin: 50rem auto;
   background-color: rgb(236, 231, 231);
   padding: 2rem 0;
 }
@@ -47,8 +49,7 @@ p {
 }
 .about-brand__image {
   margin: 2rem auto;
-  background-color: rgb(238, 238, 17);
-  width: 60vw;
-  height: 40vw;
+  width: 45vw;
+  height: 30vw;
 }
 </style>

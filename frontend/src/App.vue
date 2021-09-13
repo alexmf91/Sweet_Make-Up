@@ -6,7 +6,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <app-footer></app-footer>
+    <app-footer id="footer"></app-footer>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   font-family: "Josefin Sans", sans-serif;
   text-align: center;
   color: #2c3e50;
-  background-image: url("https://i.ibb.co/M7NQNKh/textura-marmol-dorado-rosado-125540-836.jpg");
+  background-image: url("https://www.wallpapertip.com/wmimgs/1-18588_wallpaper-rose-gold-marble-android-2019-android-wallpapers.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

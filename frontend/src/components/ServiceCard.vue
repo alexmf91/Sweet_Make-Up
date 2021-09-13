@@ -4,12 +4,16 @@
       <h3>{{ name }}</h3>
       <router-link
         class="service-info__link"
-        :to="{ name: 'service', params: { name, id, category } }"
+        :to="{
+          name: 'service',
+          params: { name, id, category, image, description },
+        }"
+        @click="scrollToTop"
       >
         <button>More</button>
       </router-link>
     </div>
-    <img :src="image" alt="" />
+    <img :src="image" alt="service-image" />
   </section>
 </template>
 
@@ -21,6 +25,12 @@ export default {
     name: String,
     category: String,
     image: String,
+    description: String,
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
@@ -32,8 +42,7 @@ export default {
 
 .service-card {
   display: flex;
-  width: 100%;
-  background-color: rgb(187, 206, 150);
+  width: 90%;
   margin: 0 auto;
   &__service-info {
     width: 50%;
@@ -55,10 +64,10 @@ export default {
   }
   img {
     width: 50%;
-    height: 35vw;
+    height: 30vw;
   }
 }
-.service-card.beauty_for_brides{
+.service-card.beauty_for_brides {
   flex-direction: row-reverse;
 }
 </style>
