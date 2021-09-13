@@ -47,6 +47,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState, mapActions, mapGetters } from "vuex";
+import { Service } from "../types/interface";
 
 export default defineComponent({
   name: "Cart",
@@ -64,11 +65,11 @@ export default defineComponent({
       "deleteServiceFromCart",
       "addServiceToCart",
     ]),
-    calculateSubtotalPrice(amount: any, price: any) {
+    calculateSubtotalPrice(amount: number, price: number): number {
       this.subTotalPrice = amount * price;
       return this.subTotalPrice;
     },
-    removeFromCart(service: any) {
+    removeFromCart(service: Service) {
       const currentUserAndService = {
         currentService: service,
         currentUserCart: this.currentUser.cart,
@@ -76,7 +77,7 @@ export default defineComponent({
       this.removeServiceToCart(currentUserAndService);
       this.$toast("Borrado del carrito");
     },
-    addToCart(service: any) {
+    addToCart(service: Service) {
       const currentUserAndService = {
         currentService: service,
         currentUserCart: this.currentUser.cart,
@@ -84,7 +85,7 @@ export default defineComponent({
       this.addServiceToCart(currentUserAndService);
       this.$toast("Añadido al carrito");
     },
-    deleteFromCart(service: any) {
+    deleteFromCart(service: Service) {
       const currentUserAndService = {
         currentService: service,
         currentUserCart: this.currentUser.cart,
@@ -105,7 +106,7 @@ export default defineComponent({
 
 .cart {
   background-color: whitesmoke;
-  padding-top: 19rem;
+  padding-top: 8rem;
   padding-bottom: 3rem;
   width: fit-content;
   margin: 0 auto;
@@ -188,7 +189,7 @@ li {
 .cart__totalprice {
   display: flex;
   align-items: flex-end;
-  justify-content:center;
+  justify-content: center;
   width: 190px;
   flex-direction: flex-end;
   padding: 20px;
