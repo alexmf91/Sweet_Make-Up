@@ -8,10 +8,9 @@ const getters = {
     return state.cart?.services?.map((services: Service) => services);
   },
   calculateTotalCartPrice(state: State): Array <CartService> {
-    const totalCartPrice = state.cart?.services?.reduce((
+    return state.cart?.services?.reduce((
       acc: number, service: any,
     ) => acc + service.amount * service.service.price, 0);
-    return totalCartPrice;
   },
   calculateCartQuantityItems(state: State):Array<CartService> {
     return state.cart?.services?.length;
