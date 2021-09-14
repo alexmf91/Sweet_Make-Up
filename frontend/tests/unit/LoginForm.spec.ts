@@ -35,7 +35,42 @@ describe('Given a LoginForm component',()=>{
             expect(byId.element.id).toBe('login-form')
         })
         describe('And the submit button is  clicked',()=>{
-            test('Then if the login function should be called', async ()=> {
+            test('Then the login function should be called', async ()=> {
+                window.scrollTo = () => null;
+                const $store = {
+                state,
+                actions: {
+                    loginUser: jest.fn(),
+                },
+                methods: {
+                    login: jest.fn(),
+                },
+                dispatch: jest.fn(),
+                commit: jest.fn(),
+                }
+                const methods = {
+                    login: jest.fn(),
+                    scrollToTop: jest.fn(),
+                }
+
+                const wrapper = mount(LoginForm, {
+                    global: {
+                        mocks: {
+                            $router: mockRouter,
+                            $store,
+                            methods,
+                        },
+                        plugins: [router]
+                    }
+                });
+                const login = jest.fn();
+                login();
+                const loginButton = wrapper.get('[data-test="login-button"]')
+                await loginButton.trigger('submit')
+
+                expect(login).toHaveBeenCalled();
+            })
+                        test('Then the login function should be called', async ()=> {
                 window.scrollTo = () => null;
                 const $store = {
                 state,
