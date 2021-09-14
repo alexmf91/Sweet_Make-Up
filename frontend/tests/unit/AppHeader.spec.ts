@@ -41,7 +41,7 @@ describe('Given a AppHeader component',()=>{
 
         describe('And the main-logo is clicked',()=>{
             test('Then the scrollToTop function should be callled', async ()=> {
-                window.scrollTo = () => null;
+                window.scrollTo = jest.fn();
                 const $store = {
                 state,
                 getters: {
@@ -52,27 +52,20 @@ describe('Given a AppHeader component',()=>{
                 dispatch: jest.fn(),
                 commit: jest.fn(),
                 }
-                const methods = {
-                    logOut: jest.fn(),
-                    scrollToTop: jest.fn(),
-                }
 
                 const wrapper = mount(AppHeader, {
                     global: {
                         mocks: {
                             $router: mockRouter,
                             $store,
-                            methods,
                         },
                         plugins: [router]
                     }
                 });
-                const scrollToTop = jest.fn();
-                scrollToTop();
                 const mainLogo = wrapper.get('[data-test="main-logo"]')
                 await mainLogo.trigger('click')
 
-                expect(scrollToTop).toHaveBeenCalled();
+                expect(window.scrollTo).toHaveBeenCalled();
             })
         })
         describe('And the logOut is  clicked',()=>{
