@@ -13,6 +13,7 @@
       >
         <img :src="service.picture" alt="" />
         <p>{{ service.name }}</p>
+        <span> {{ service.price }}€</span>
         <router-link
           class="service-card"
           @click="scrollToTop"
@@ -112,6 +113,9 @@ ul {
       button,
       p {
         font-size: 14.5px;
+      }
+      .search-view__title{
+        font-size: 20px;
       }
     }
   }
