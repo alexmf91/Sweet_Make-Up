@@ -94,7 +94,7 @@ button {
   color: white;
 
   i {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", sans-serif;
   }
   &:hover {
     cursor: pointer;
