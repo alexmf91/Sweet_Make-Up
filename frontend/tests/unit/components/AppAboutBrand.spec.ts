@@ -1,5 +1,5 @@
 import {mount} from '@vue/test-utils'
-import AppAboutBrand from '../../src/components/AppAboutBrand.vue'
+import AppAboutBrand from '../../../src/components/AppAboutBrand.vue'
 
 describe('Given an AppAboutBrand component',()=>{
     describe('When the component is rendered',()=>{
