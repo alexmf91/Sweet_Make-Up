@@ -269,7 +269,7 @@ button {
   text-decoration: none;
 }
 i {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
 }
 @media screen and (max-width: 480px) {
   .desktop-nav-links,
