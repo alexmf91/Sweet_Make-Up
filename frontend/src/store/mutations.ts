@@ -1,8 +1,8 @@
 import {
-  State,Service, User, Cart, CartService,
+  State, Service, User, Cart,
 } from '../types/interface';
 
-const mutations =  {
+const mutations = {
   loadServices(state: State, payload: Array<Service>) {
     state.services = payload;
   },
@@ -21,9 +21,6 @@ const mutations =  {
   emptyUser(state: State, payload: string) {
     state.currentUser = payload;
   },
-  updateCart(state: State, payload: CartService) {
-    state.cart = [...state.cart, payload];
-  },
   loadCart(state: State, payload: Cart) {
     state.cart = payload;
   },
@@ -36,6 +33,6 @@ const mutations =  {
   loadSortType(state: State, payload: string) {
     state.selectedSortPrice = payload;
   },
-}
+};
 
 export default mutations;
