@@ -1,9 +1,9 @@
 <template>
   <header>
-    <router-link class="btn-header button" to="/" @click="scrollToTop">
+    <router-link data-test='main-logo' class="btn-header button" to="/" @click="scrollToTop">
       <img class="main-logo" src="../assets/main-logo.svg" alt="" />
     </router-link>
-    <nav class="desktop-nav-links">
+    <nav class="desktop-nav-links" aria-labelledby="Navigation">
       <router-link class="btn-header button" to="/" @click="scrollToTop"
         >Home
       </router-link>
@@ -14,7 +14,7 @@
       >
       <a class="btn-header button" href="#footer">Contacto</a>
     </nav>
-    <nav class="mobile-nav-links">
+    <nav class="mobile-nav-links" aria-labelledby="Navigation">
       <div class="mobile-nav-links__user">
         <span class="user-icon">
           <i class="fas fa-user fa-lg"></i>
@@ -53,7 +53,7 @@
           <a class="btn-header button" href="#footer">Contacto</a>
           <div v-if="currentUser" class="content__user">
             <router-link to="/profile" @click="scrollToTop">Perfil</router-link>
-            <button @click="logOut">Logout</button>
+            <button data-test='logOut-button' @click="logOut">Logout</button>
           </div>
           <div v-else class="content__user">
             <router-link to="/login" @click="scrollToTop">Login</router-link>
@@ -108,12 +108,12 @@ export default {
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 header {
-  background-color: rgb(223, 215, 215);
+  background-color: rgb(252, 252, 252);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 5rem;
   margin: 0;
   position: fixed;
   top: 0;
@@ -130,8 +130,8 @@ button {
 }
 .main-logo {
   margin-left: 0.9rem;
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 .desktop-nav-links {
   display: flex;
@@ -198,13 +198,13 @@ button {
   display: none;
   position: absolute;
   right: 55px;
-  top: 40px;
+  top: 50px;
   z-index: 2;
 }
 .cart-icon__quantity {
   position: absolute;
   right: 43px;
-  top: 12px;
+  top: 17px;
   background-color: white;
   border-radius: 10px;
   width: 15px;
