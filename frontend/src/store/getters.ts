@@ -2,7 +2,7 @@ import {
   State,
   Service, CartService,
 } from '../types/interface';
- 
+
 const getters = {
   getCartServices(state: State): Array <Service> {
     return state.cart?.services?.map((services: Service) => services);
@@ -41,4 +41,4 @@ const getters = {
     return filteredServicesByCategory;
   },
 };
-  export default getters;
+export default getters;
