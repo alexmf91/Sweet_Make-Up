@@ -166,8 +166,7 @@ button {
   display: none;
   right: 15px;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 15px;
+  padding: 19px 15px 15px;
   position: absolute;
   top: 100%;
   background-color: #fff;
@@ -221,8 +220,7 @@ button {
   display: none;
   right: 10px;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 20px;
+  padding: 24px 20px 20px;
   position: absolute;
   top: 100%;
   background-color: rgb(240, 235, 235);
@@ -257,8 +255,7 @@ button {
   border-radius: 5rem;
   right: 0.5rem;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 0.3rem;
+  padding: 0.55rem 0.3rem 0.3rem;
   position: absolute;
   top: 100%;
   background-color: #fff;
