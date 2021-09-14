@@ -1,5 +1,9 @@
 <template>
-  <form @submit.prevent="register" class="register__form">
+  <form
+    @submit.prevent="register"
+    class="register__form"
+    data-test="register-button"
+  >
     <div class="form__name-surname">
       <input
         class="name-surname__name-field"
@@ -69,7 +73,7 @@ export default defineComponent({
 @import "../styles/colors.scss";
 
 .register__form {
-  zoom:110%;
+  zoom: 110%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -142,9 +146,9 @@ export default defineComponent({
     }
   }
 }
-    @media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) {
   .register__form {
-    zoom:130%;
+    zoom: 130%;
   }
 }
 </style>
