@@ -1,8 +1,8 @@
 <template>
   <main class="services-container">
     <div class="services-container__description" style>
-      <img :src="image" alt="" />
       <p>{{ description }}</p>
+      <img :src="image" alt="" />
     </div>
     <CategoryServices />
   </main>
@@ -45,9 +45,8 @@ export default {
     background-size: contain;
     background-position: center;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding: 50px;
+    align-items: center;
     width: 100%;
     height: fit-content;
     margin: 0 auto;
@@ -58,16 +57,18 @@ export default {
       padding: 20px 0;
     }
     img {
-      width: 30vw;
-      height: 25vw;
+      width: cover;
+      height: 40vw;
       margin: 0 auto;
     }
     p{
       text-align: center;
       font-weight: 300;
-      color: $quartiary-color;
+      color: $secondary-color;
       padding: 10px 25px;
       font-size: 2vw;
+      letter-spacing: 3px;
+      line-height: 2.2;
     }
   }
 }

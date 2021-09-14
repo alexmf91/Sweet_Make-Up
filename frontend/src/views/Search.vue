@@ -13,8 +13,10 @@
       >
         <img :src="service.picture" alt="" />
         <p>{{ service.name }}</p>
+        <span> {{ service.price }}€</span>
         <router-link
           class="service-card"
+          @click="scrollToTop"
           :to="'/service/' + service.type + '/' + service.name"
         >
           <button>Detalles</button>
@@ -39,6 +41,9 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchServicesFromApi"]),
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     this.fetchServicesFromApi();
@@ -108,6 +113,9 @@ ul {
       button,
       p {
         font-size: 14.5px;
+      }
+      .search-view__title{
+        font-size: 20px;
       }
     }
   }

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <form @submit.prevent="login" class="register__form">
+    <form
+      @submit.prevent="login"
+      class="register__form"
+      id="login-form"
+    >
       <input type="email" v-model="email" placeholder="Email" required />
       <input
         type="password"
@@ -8,9 +12,15 @@
         placeholder="Password"
         required
       />
-      <button class="form__submit-button" type="submit">Submit</button>
+      <button
+        class="form__submit-button"
+        type="submit"
+        data-test="login-button"
+      >
+        Submit
+      </button>
     </form>
-    <div v-if='somethingWrong'>Ups!Algo ha ido mal, intentalo otra vez.</div>
+    <div v-if="somethingWrong">Ups!Algo ha ido mal, intentalo otra vez.</div>
   </div>
 </template>
 

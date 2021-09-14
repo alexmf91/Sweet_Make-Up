@@ -1,5 +1,5 @@
 <template>
-  <div class="category-services">
+  <div class="category-services" id="category-services">
     <ul>
       <li
         v-for="service in categoryServices"
@@ -11,6 +11,8 @@
         <p>{{ service.name }}</p>
         <router-link
           class="service-card"
+          @click="scrollToTop"
+          data-test="details-button"
           :to="currentCategory + '/' + service.name"
         >
           <button>Detalles</button>
@@ -32,6 +34,9 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["fetchServicesForCategoryFromApi"]),
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     const route = useRoute();
@@ -69,15 +74,15 @@ ul {
     width: 35vw;
     max-width: 350px;
     height: 40vw;
-    max-height: 400px;
+    max-height: 430px;
     padding: 0.5vw;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
     img {
       margin: 0 auto;
       width: 28vw;
-      height: 20vw;
-      max-height: 215px;
+      height: 25vw;
+      max-height: 235px;
       max-width: 295px;
     }
     p {

@@ -1,9 +1,9 @@
 <template>
   <header>
-    <router-link class="btn-header button" to="/" @click="scrollToTop">
+    <router-link data-test='main-logo' class="btn-header button" to="/" @click="scrollToTop">
       <img class="main-logo" src="../assets/main-logo.svg" alt="" />
     </router-link>
-    <nav class="desktop-nav-links">
+    <nav class="desktop-nav-links" aria-labelledby="Navigation">
       <router-link class="btn-header button" to="/" @click="scrollToTop"
         >Home
       </router-link>
@@ -14,7 +14,7 @@
       >
       <a class="btn-header button" href="#footer">Contacto</a>
     </nav>
-    <nav class="mobile-nav-links">
+    <nav class="mobile-nav-links" aria-labelledby="Navigation">
       <div class="mobile-nav-links__user">
         <span class="user-icon">
           <i class="fas fa-user fa-lg"></i>
@@ -53,7 +53,7 @@
           <a class="btn-header button" href="#footer">Contacto</a>
           <div v-if="currentUser" class="content__user">
             <router-link to="/profile" @click="scrollToTop">Perfil</router-link>
-            <button @click="logOut">Logout</button>
+            <button data-test='logOut-button' @click="logOut">Logout</button>
           </div>
           <div v-else class="content__user">
             <router-link to="/login" @click="scrollToTop">Login</router-link>
@@ -108,12 +108,12 @@ export default {
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 header {
-  background-color: rgb(223, 215, 215);
+  background-color: rgb(252, 252, 252);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 5rem;
   margin: 0;
   position: fixed;
   top: 0;
@@ -130,8 +130,8 @@ button {
 }
 .main-logo {
   margin-left: 0.9rem;
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 .desktop-nav-links {
   display: flex;
@@ -166,8 +166,7 @@ button {
   display: none;
   right: 15px;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 15px;
+  padding: 19px 15px 15px;
   position: absolute;
   top: 100%;
   background-color: #fff;
@@ -198,13 +197,13 @@ button {
   display: none;
   position: absolute;
   right: 55px;
-  top: 40px;
+  top: 50px;
   z-index: 2;
 }
 .cart-icon__quantity {
   position: absolute;
   right: 43px;
-  top: 12px;
+  top: 17px;
   background-color: white;
   border-radius: 10px;
   width: 15px;
@@ -221,8 +220,7 @@ button {
   display: none;
   right: 10px;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 20px;
+  padding: 24px 20px 20px;
   position: absolute;
   top: 100%;
   background-color: rgb(240, 235, 235);
@@ -257,8 +255,7 @@ button {
   border-radius: 5rem;
   right: 0.5rem;
   text-decoration: none;
-  padding-top: 4px;
-  padding: 0.3rem;
+  padding: 0.55rem 0.3rem 0.3rem;
   position: absolute;
   top: 100%;
   background-color: #fff;
@@ -272,7 +269,7 @@ button {
   text-decoration: none;
 }
 i {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
 }
 @media screen and (max-width: 480px) {
   .desktop-nav-links,

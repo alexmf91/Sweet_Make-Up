@@ -1,9 +1,10 @@
 <template>
-  <section :class="'service-card ' + category" :key="id">
+  <section :class="'service-card ' + category" :key="id" id='service-card'>
     <div class="service-card__service-info">
       <h3>{{ name }}</h3>
       <router-link
         class="service-info__link"
+        data-test="more-button"
         :to="{
           name: 'service',
           params: { name, id, category, image, description },
