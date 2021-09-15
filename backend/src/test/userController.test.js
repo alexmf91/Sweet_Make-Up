@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const userController = require('./userController');
+const userController = require('../controllers/userController');
 const User = require('../models/userModel');
 
 jest.mock('../models/userModel');

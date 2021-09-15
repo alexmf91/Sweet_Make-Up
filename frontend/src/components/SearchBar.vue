@@ -107,6 +107,6 @@ export default {
   }
 }
 i {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
 }
 </style>

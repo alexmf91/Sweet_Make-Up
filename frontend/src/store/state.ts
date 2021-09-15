@@ -3,11 +3,11 @@ const state = {
   categoryServices: [],
   currentCategory: '',
   currentService: {},
-  currentUser: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user") || "") : "",
+  currentUser: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '') : '',
   cart: [],
   keyword: '',
   selectedCategory: '',
   selectedSortPrice: '',
-}
+};
 
 export default state;

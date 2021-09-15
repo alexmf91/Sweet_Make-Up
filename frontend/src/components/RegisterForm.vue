@@ -3,6 +3,7 @@
     @submit.prevent="register"
     class="register__form"
     data-test="register-button"
+    id='register-form'
   >
     <div class="form__name-surname">
       <input

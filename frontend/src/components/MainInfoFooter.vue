@@ -16,10 +16,22 @@
       </span>
     </div>
     <div class="info__social-media">
-        <img src="https://img.icons8.com/ios/50/ffffff/facebook-circled--v1.png"/>
-        <img src="https://img.icons8.com/ios/50/ffffff/instagram-new--v1.png"/>
-        <img src="https://img.icons8.com/ios/50/ffffff/twitter--v1.png"/>
-        <img src="https://img.icons8.com/ios/50/ffffff/pinterest--v1.png"/>
+      <img
+        src="https://img.icons8.com/ios/50/ffffff/facebook-circled--v1.png"
+        alt="facebook-icon"
+      />
+      <img
+        src="https://img.icons8.com/ios/50/ffffff/instagram-new--v1.png"
+        alt="instagram-icon"
+      />
+      <img
+        src="https://img.icons8.com/ios/50/ffffff/twitter--v1.png"
+        alt="twitter-icon"
+      />
+      <img
+        src="https://img.icons8.com/ios/50/ffffff/pinterest--v1.png"
+        alt="pinterest-icon"
+      />
     </div>
   </div>
 </template>
@@ -71,7 +83,7 @@
   }
 }
 i {
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free", sans-serif;
   margin-right: 4px;
 }
 </style>

@@ -24,17 +24,17 @@ const actions = {
     const userCart = await axios.post('http://localhost:8001/api/cart');
     const userWithCart = { ...user, cart: userCart.data._id };
     await axios.post('http://localhost:8001/api/register', userWithCart);
-    localStorage.setItem("user", JSON.stringify(userWithCart));
-    commit("loadUser", userWithCart);
+    localStorage.setItem('user', JSON.stringify(userWithCart));
+    commit('loadUser', userWithCart);
   },
   async loginUser({ commit }:ActionContext<State, State>, user: LoginUser) {
     const { data } = await axios.post('http://localhost:8001/api/login', user);
-    localStorage.setItem("user", JSON.stringify(data.user));
-    commit("loadUser", data.user);
+    localStorage.setItem('user', JSON.stringify(data.user));
+    commit('loadUser', data.user);
   },
   userLogOut({ commit }:ActionContext<State, State>) {
     const noUser = '';
-    commit("emptyUser", noUser);
+    commit('emptyUser', noUser);
   },
   async addServiceToCart({ commit }:ActionContext<State, State>,
     { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
@@ -56,7 +56,7 @@ const actions = {
       };
     }
     const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
-    commit("loadCart", cartUpdatedToRender.data);
+    commit('loadCart', cartUpdatedToRender.data);
   },
   async removeServiceToCart({ commit }:ActionContext<State, State>,
     { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
@@ -77,19 +77,18 @@ const actions = {
       };
     }
     const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
-    commit("loadCart", cartUpdatedToRender.data);
+    commit('loadCart', cartUpdatedToRender.data);
   },
   async deleteServiceFromCart({ commit }:ActionContext<State, State>,
     { currentUserCart, currentService }:{ currentUserCart: string, currentService: Service }) {
     const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
     const currentCartServices = data.services;
-    console.log(currentCartServices);
     const cartUpdated = {
       services: currentCartServices
         .filter((element:any) => element.service._id !== currentService._id),
     };
     const cartUpdatedToRender = await axios.put(`http://localhost:8001/api/cart/${currentUserCart}`, cartUpdated);
-    commit("loadCart", cartUpdatedToRender.data);
+    commit('loadCart', cartUpdatedToRender.data);
   },
   async fetchCartFromApi({ commit }:ActionContext<State, State>, currentUserCart: string) {
     const { data } = await axios.get(`http://localhost:8001/api/cart/${currentUserCart}`);
@@ -104,6 +103,6 @@ const actions = {
   sortByPrice({ commit }:ActionContext<State, State>, sortType: string) {
     commit('loadSortType', sortType);
   },
-}
+};
 
-  export default actions;
+export default actions;

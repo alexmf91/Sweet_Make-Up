@@ -1,5 +1,5 @@
 const Cart = require('../models/cartModel');
-const cartController = require('./cartController');
+const cartController = require('../controllers/cartController');
 
 jest.mock('../models/cartModel');
 
@@ -47,7 +47,9 @@ describe('Given getOneById function', () => {
   describe('When is invoked', () => {
     describe('And Cart.findById resolves', () => {
       test('Then res.json is called', async () => {
-        Cart.findById.mockResolvedValue();
+        Cart.findById.mockReturnValue({
+          populate: jest.fn().mockResolvedValue()
+        });
 
         await cartController.getOneById(req, res);
 
@@ -56,14 +58,18 @@ describe('Given getOneById function', () => {
     });
     describe('And Cart.findById rejects', () => {
       test('Then res.status is called', async () => {
-        Cart.findById.mockRejectedValue();
+        Cart.findById.mockReturnValue({
+          populate: jest.fn().mockRejectedValue()
+        });
 
         await cartController.getOneById(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);
       });
       test('Then res.send is called with FIND_ERROR', async () => {
-        Cart.findById.mockRejectedValue(new Error('FIND_ERROR'));
+        Cart.findById.mockReturnValue({
+          populate: jest.fn().mockRejectedValue(new Error('FIND_ERROR'))
+        });
 
         await cartController.getOneById(req, res);
 
@@ -79,10 +85,11 @@ describe('Given updateOneById function', () => {
     res = { json: jest.fn(), status: jest.fn(), send: jest.fn() };
   });
   describe('When is invoked', () => {
-    describe('And Cart.findById resolves', () => {
+    describe('And Cart.findByIdAndUpdate resolves', () => {
       test('Then res.json is called', async () => {
-        Cart.findByIdAndUpdate.mockResolvedValue();
-
+        Cart.findByIdAndUpdate.mockReturnValue({
+          populate: jest.fn().mockResolvedValue()
+        });
         await cartController.updateOneById(req, res);
 
         expect(res.json).toHaveBeenCalled();
@@ -90,14 +97,18 @@ describe('Given updateOneById function', () => {
     });
     describe('And Cart.findByIdAndUpdate rejects', () => {
       test('Then res.status is called', async () => {
-        Cart.findByIdAndUpdate.mockRejectedValue();
+        Cart.findByIdAndUpdate.mockReturnValue({
+          populate: jest.fn().mockRejectedValue()
+        });
 
         await cartController.updateOneById(req, res);
 
         expect(res.status).toHaveBeenCalledWith(500);
       });
       test('Then res.send is called with FIND_ERROR', async () => {
-        Cart.findByIdAndUpdate.mockRejectedValue(new Error('FIND_ERROR'));
+        Cart.findByIdAndUpdate.mockReturnValue({
+          populate: jest.fn().mockRejectedValue(new Error('FIND_ERROR'))
+        });
 
         await cartController.updateOneById(req, res);
 

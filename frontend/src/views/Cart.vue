@@ -1,5 +1,5 @@
 <template>
-  <div class="cart">
+  <div class="cart" id="cart">
     <div class="cart-details">
       <h2 class="cart-details__products">PRODUCTOS</h2>
       <h2 class="cart-details__price">PRECIO</h2>
@@ -9,7 +9,10 @@
     <ul class="cart-content">
       <li v-for="service in getCartServices" :key="service">
         <div class="cart-content__name">
-          <button @click="deleteFromCart(service.service)">
+          <button
+            @click="deleteFromCart(service.service)"
+            data-test="delete-from-cart-button"
+          >
             <i class="far fa-times-circle fa-lg"></i>
           </button>
           <img :src="service.service.picture" alt="" />
@@ -19,12 +22,17 @@
         <div class="cart-content__amount">
           <button
             class="amount__remove"
+            data-test="remove-from-cart-button"
             @click="removeFromCart(service.service)"
           >
             <i class="fas fa-minus"></i>
           </button>
           <p>{{ service.amount }}</p>
-          <button class="amount__add" @click="addToCart(service.service)">
+          <button
+            class="amount__add"
+            data-test="add-from-cart-button"
+            @click="addToCart(service.service)"
+          >
             <i class="fas fa-plus"></i>
           </button>
         </div>
@@ -140,7 +148,7 @@ li {
       border: none;
       background-color: transparent;
       i {
-        font-family: "Font Awesome 5 Free";
+        font-family: "Font Awesome 5 Free", sans-serif;
       }
       &:hover {
         cursor: pointer;
@@ -183,7 +191,7 @@ li {
     width: 100px;
   }
   i {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", sans-serif;
   }
 }
 .cart__totalprice {

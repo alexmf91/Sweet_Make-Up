@@ -1,9 +1,9 @@
 <template>
-  <div class="search-view">
-    <h2 class="search-view__title">
-      Busca el nombre del servicio que deseas..
-    </h2>
-    <SearchBar />
+  <main class="search-view" id="search">
+    <div class="search-view__background-title">
+      <h2 class="search-view__title">¿Qué estás buscando?</h2>
+      <SearchBar class="search-view__search-bar" />
+    </div>
     <ul>
       <li
         v-for="service in filteredServices"
@@ -17,13 +17,14 @@
         <router-link
           class="service-card"
           @click="scrollToTop"
+          data-test="details-button"
           :to="'/service/' + service.type + '/' + service.name"
         >
           <button>Detalles</button>
         </router-link>
       </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script lang='ts'>
@@ -55,37 +56,53 @@ export default defineComponent({
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 @import "../styles/mixins.scss";
-
+.search-view__background-title {
+  margin: 60px 0;
+  width: 100%;
+  height: fit-content;
+}
 .search-view {
-  padding: 20px;
-  padding-top: 8rem;
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  background: #ffffffc4;
+  &__background-title {
+    background: #ffffffc4;
+    margin: 0 auto 40px;
+    height: fit-content;
+    left: 0;
+    right: 0;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+  }
   h2 {
     color: $secondary-color;
     font-size: 5vw;
     font-weight: 300;
     margin: 50px 0;
   }
+  &__search-bar {
+    width: 90%;
+  }
 }
 ul {
   text-decoration: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem auto;
+  margin: 3rem auto;
   justify-content: center;
   max-width: 64rem;
   li {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 0 auto;
+    margin: 20px;
     background-color: rgb(233, 233, 233);
     list-style: none;
     text-decoration: none;
     color: $primary-color;
-    margin: 20px;
     width: 35vw;
     max-width: 270px;
     height: 40vw;
@@ -114,7 +131,7 @@ ul {
       p {
         font-size: 14.5px;
       }
-      .search-view__title{
+      .search-view__title {
         font-size: 20px;
       }
     }

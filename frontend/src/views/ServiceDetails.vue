@@ -1,5 +1,5 @@
 <template>
-  <section class="details-view">
+  <main class="details-view" id='service-details'>
     <div class="details-view-content">
       <h1>{{ currentService.name }}</h1>
       <div class="details-view__service-details">
@@ -22,11 +22,11 @@
               </span>
             </span>
           </div>
-          <button @click="addToCart">Añadir al carrito</button>
+          <button data-test='addToCartButton' @click="addToCart">Añadir al carrito</button>
         </div>
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script>

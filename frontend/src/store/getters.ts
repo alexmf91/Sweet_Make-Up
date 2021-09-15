@@ -27,11 +27,11 @@ const getters = {
         .filter((service: Service) => service.type === state.selectedCategory);
     }
     switch (state.selectedSortPrice) {
-      case "rising":
+      case 'rising':
         filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA:any,
           serviceB:any) => serviceA.price - serviceB.price);
         break;
-      case "descending":
+      case 'descending':
         filteredServicesByCategory = filteredServicesByCategory?.sort((serviceA:any,
           serviceB:any) => serviceB.price - serviceA.price);
         break;
