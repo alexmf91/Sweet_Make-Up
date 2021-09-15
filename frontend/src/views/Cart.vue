@@ -148,7 +148,7 @@ li {
       border: none;
       background-color: transparent;
       i {
-        font-family: "Font Awesome 5 Free";
+        font-family: "Font Awesome 5 Free", sans-serif;
       }
       &:hover {
         cursor: pointer;
@@ -191,7 +191,7 @@ li {
     width: 100px;
   }
   i {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", sans-serif;
   }
 }
 .cart__totalprice {
