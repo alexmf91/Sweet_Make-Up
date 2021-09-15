@@ -1,5 +1,5 @@
 <template>
-  <div class="search-view">
+  <main class="search-view" id="search">
     <h2 class="search-view__title">
       Busca el nombre del servicio que deseas..
     </h2>
@@ -17,13 +17,14 @@
         <router-link
           class="service-card"
           @click="scrollToTop"
+          data-test="details-button"
           :to="'/service/' + service.type + '/' + service.name"
         >
           <button>Detalles</button>
         </router-link>
       </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script lang='ts'>
@@ -114,7 +115,7 @@ ul {
       p {
         font-size: 14.5px;
       }
-      .search-view__title{
+      .search-view__title {
         font-size: 20px;
       }
     }
