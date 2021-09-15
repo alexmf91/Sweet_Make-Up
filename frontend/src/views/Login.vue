@@ -1,6 +1,5 @@
 <template>
   <div class="register-view">
-    <h2>login</h2>
     <LogInForm />
   </div>
 </template>
@@ -23,5 +22,6 @@ export default defineComponent({
 
 .register-view {
   background-color: $primary-color;
+  padding: 10rem 0 20rem;
 }
 </style>
