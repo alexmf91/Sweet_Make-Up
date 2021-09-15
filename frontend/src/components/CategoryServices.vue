@@ -53,6 +53,7 @@ export default defineComponent({
 
 .category-services {
   padding: 20px;
+  margin-top: 4rem;
 }
 ul {
   text-decoration: none;
@@ -66,7 +67,6 @@ ul {
     flex-direction: column;
     justify-content: space-evenly;
     background-color: white;
-    margin: 0 auto;
     list-style: none;
     text-decoration: none;
     color: $primary-color;
