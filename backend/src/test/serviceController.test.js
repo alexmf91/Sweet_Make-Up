@@ -1,5 +1,5 @@
 const Service = require('../models/serviceModel');
-const serviceController = require('./serviceController');
+const serviceController = require('../controllers/serviceController');
 
 jest.mock('../models/serviceModel');
 
