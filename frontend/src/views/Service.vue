@@ -32,14 +32,12 @@ export default {
 @import "../styles/mixins.scss";
 
 .services-container {
-  padding-top: 7rem;
+  padding-top: 5rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   &__description {
-    border-top: 1vw solid $primary-color;
-    border-bottom: 1vw solid $primary-color;
     background-color: white;
     background-repeat: no-repeat;
     background-size: contain;
