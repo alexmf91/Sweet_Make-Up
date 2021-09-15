@@ -1,54 +1,54 @@
 export interface State {
     services: Array <Service> | [] ,
     categoryServices: Object,
-    currentCategory: String,
+    currentCategory: string,
     currentService: Object,
-    currentUser: String | Object,
+    currentUser: string | Object,
     cart: any, 
-    keyword: String,
-    selectedCategory: String,
-    selectedSortPrice: String,
+    keyword: string,
+    selectedCategory: string,
+    selectedSortPrice: string,
 }
 
 export interface User {
-    name: String,
-    surname: String,
-    phone: String,
-    email: String,
-    password: String,
-    gender: String,
-    cart: String,
+    name: string,
+    surname: string,
+    phone: string,
+    email: string,
+    password: string,
+    gender: string,
+    cart: string,
     bookings: Array<Service>
 }
 export interface RegisterUser {
-    _id: String,
-    name: String,
-    surname: String,
-    phone: String,
-    email: String,
-    password: String,
+    _id: string,
+    name: string,
+    surname: string,
+    phone: string,
+    email: string,
+    password: string,
 }
 
 export interface LoginUser {
-    name: String,
-    password: String,
+    name: string,
+    password: string,
 }
 
 export interface Service {
-    _id: String,
-    picture: String,
-    name: String,
-    description: String,
-    duration: String,
-    price: Number,
-    type: String,
+    _id: string,
+    picture: string,
+    name: string,
+    description: string,
+    duration: string,
+    price: number,
+    type: string,
 }
 
 export interface CartService {
     service: Service,
-    amount: Number,
-    types: String
+    amount: number,
+    types: string
 }
 export interface Cart {
-    services: Array<CartService> | String,
+    services: Array<CartService> | string,
 }
