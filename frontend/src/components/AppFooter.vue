@@ -14,7 +14,7 @@ import MainInfoFooter from "./MainInfoFooter.vue";
 import ContactForm from "./ContactForm.vue";
 
 export default {
-  name: "app-footer",
+  name: "AppFooter",
   components: {
     MainInfoFooter,
     ContactForm,
