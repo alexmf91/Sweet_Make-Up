@@ -1,5 +1,5 @@
 <template>
-  <div class="register-view">
+  <div class="login-view">
     <LogInForm />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default defineComponent({
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 
-.register-view {
+.login-view {
   background-color: $primary-color;
   padding: 10rem 0 20rem;
 }
