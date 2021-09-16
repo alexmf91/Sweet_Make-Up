@@ -14,7 +14,7 @@
     <img
       class="about-brand__image"
       src="https://st.depositphotos.com/2884373/4996/i/600/depositphotos_49961447-stock-photo-woman-applying-make-up-for.jpg"
-      alt=""
+      alt="about-brand-img"
     />
   </section>
 </template>
