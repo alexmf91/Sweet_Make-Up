@@ -25,7 +25,7 @@ import { defineComponent } from "vue";
 import { mapState, mapActions, mapGetters } from "vuex";
 
 export default defineComponent({
-  name: "Cart",
+  name: "CartHeader",
   computed: {
     ...mapState(["cart", "currentUser"]),
     ...mapGetters(["getCartServices", "calculateTotalCartPrice"]),

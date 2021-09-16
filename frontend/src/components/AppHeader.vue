@@ -79,7 +79,7 @@ import { mapState, mapActions, mapGetters } from "vuex";
 import CartHeader from "./CartHeader.vue";
 
 export default {
-  name: "app-header",
+  name: "AppHeader",
   components: {
     CartHeader,
   },

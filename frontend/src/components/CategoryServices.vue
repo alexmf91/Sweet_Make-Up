@@ -21,7 +21,7 @@
     </ul>
   </div>
 </template>
-s
+
 <script lang='ts'>
 import { defineComponent } from "vue";
 import { mapState, mapActions } from "vuex";

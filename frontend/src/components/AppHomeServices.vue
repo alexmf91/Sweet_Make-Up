@@ -21,7 +21,7 @@ import ServicesHomeBanner from "./ServicesHomeBanner.vue";
 import ServiceCard from "./ServiceCard.vue";
 
 export default {
-  name: "home-services-component",
+  name: "AppHomeServices",
   components: {
     ServiceCard,
     ServicesHomeBanner,

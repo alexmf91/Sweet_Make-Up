@@ -39,6 +39,7 @@ import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 
 export default defineComponent({
+  name: 'RegisterForm',
   data: () => ({
     name: "",
     surname: "",
