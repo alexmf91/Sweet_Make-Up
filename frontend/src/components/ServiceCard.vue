@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "service-card",
+  name: "ServiceCard",
   props: {
     id: String,
     name: String,
