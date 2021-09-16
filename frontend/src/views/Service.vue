@@ -12,7 +12,7 @@
 import CategoryServices from "../components/CategoryServices.vue";
 
 export default {
-  name: "service-view",
+  name: "ServiceView",
   components: {
     CategoryServices,
   },
