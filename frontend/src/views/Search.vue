@@ -33,7 +33,7 @@ import { mapActions, mapGetters } from "vuex";
 import SearchBar from "../components/SearchBar.vue";
 
 export default defineComponent({
-  name: "Services",
+  name: "Search",
   components: {
     SearchBar,
   },
@@ -56,11 +56,7 @@ export default defineComponent({
 @import "../styles/reset.scss";
 @import "../styles/colors.scss";
 @import "../styles/mixins.scss";
-.search-view__background-title {
-  margin: 60px 0;
-  width: 100%;
-  height: fit-content;
-}
+
 .search-view {
   padding-top: 4rem;
   display: flex;
@@ -76,6 +72,9 @@ export default defineComponent({
     padding: 30px 0;
     display: flex;
     flex-direction: column;
+    margin: 60px 0;
+    width: 100%;
+    height: fit-content;
   }
   h2 {
     color: $secondary-color;
