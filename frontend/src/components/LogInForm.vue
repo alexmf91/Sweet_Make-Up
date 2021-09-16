@@ -29,6 +29,7 @@ import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
+  name: "LoginForm",
   data: () => ({
     email: "",
     password: "",
