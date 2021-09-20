@@ -5,20 +5,17 @@
 
 
 <p> 
-  <a href="https://vuejs.org/" target="_blank"> 
+   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> 
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
+  </a> 
+   <a href="https://vuejs.org/" target="_blank"> 
     <img src="https://vuejs.org/images/logo.svg" alt="vue" width="65" height="40"/> 
   </a> 
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
+  <a href="https://vuex.vuejs.org/" target="_blank"> 
+    <img src="https://user-images.githubusercontent.com/7110136/29002857-9e802f08-7ab4-11e7-9c31-604b5d0d0c19.png" alt="vuex" width="40" height="40"/> 
   </a> 
   <a href="https://jestjs.io" target="_blank"> 
     <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> 
-  </a> 
-  <a href="https://testing-library.com/" target="_blank">
-    <img src="https://testing-library.com/img/octopus-128x128.png" alt="figma" width="40" height="40" /> 
-  </a>
-  <a href="https://vuex.vuejs.org/" target="_blank"> 
-    <img src="https://user-images.githubusercontent.com/7110136/29002857-9e802f08-7ab4-11e7-9c31-604b5d0d0c19.png" alt="vuex" width="40" height="40"/> 
   </a> 
   <a href="https://github.com/" target="_blank">
     <img src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg" width="40" height="40">
@@ -29,8 +26,8 @@
   <a href="https://www.w3schools.com/css/" target="_blank"> 
     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Flogotypes%2F32%2Fbadge-css-3-512.png&f=1&nofb=1" alt="css3" width="40" height="40"/>
   </a>
-  <a href="https://material-ui.com/" target="_blank"> 
-    <img src="https://material-ui.com/static/logo_raw.svg" alt="materialUI" width="40" height="40"/> 
+  <a href="https://sass-lang.com/" target="_blank"> 
+    <img src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" alt="sass" width="40" height="40"/> 
    </a>
    <a href="https://www.sonarqube.org/" target="_blank"> 
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO0yEhvvnlyrgcg3uHSsRBhehjzhs-WXGte9NyDRM0LsscmgtxHIT4vHU9B8hemUmhSrc&usqp=CAU" alt="sonarqube" width="40" height="40"/> 
