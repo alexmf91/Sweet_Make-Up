@@ -1,5 +1,11 @@
 # Sweet Make-Up E-comerce ​💇‍
 
+Application of makeup and hairstyles services for weddings and events.
+The application shows all the services offered by the company allowing you to filter by category, sort by price and add
+to the cart if the user has been registered and logged in.
+
+
+The project has been made with Vue.js and Typescript on the front end and ApiRestful with MongoDB and Mongoose on the backend.
 
 ## 💻 Technologies I used:
 
